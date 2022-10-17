@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
+// void main() => runApp(const WWUWashAndDryApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -41,3 +42,37 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 }
+
+
+// This example runs a stateless screen. 
+class WWUWashAndDryApp extends StatelessWidget {
+  const WWUWashAndDryApp({super.key});
+
+  static const String _title = 'WWU Wash and Dry';
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: _title,
+      home: MyStatelessWidget(),
+    );
+  }
+}
+
+
+class MyStatelessWidget extends StatelessWidget {
+  const MyStatelessWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('WWU Wash and Dry'),
+      ),
+      body: const Center(child: Text('This screen does not change states.')),
+    );
+  }
+}
+
+
+
