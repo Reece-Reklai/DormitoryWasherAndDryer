@@ -9,8 +9,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (key === "AuthFailed") {
-      return HomePage();
-    }
+    return const LoginPage();
   }
 }
