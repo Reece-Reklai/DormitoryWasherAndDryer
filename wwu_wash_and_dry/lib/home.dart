@@ -20,5 +20,6 @@ class _WWUAppState extends State<WWUApp> {
   var accessKey = "-1";
   @override
   Widget build(BuildContext context) {
-    return Login(acessKey)
+    return Login(accessKey);
+  }
 }
