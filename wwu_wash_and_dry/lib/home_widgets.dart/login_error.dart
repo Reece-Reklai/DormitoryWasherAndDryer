@@ -5,6 +5,15 @@ class LoginError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LoginError();
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('WWU Wash and Dry'),
+        ),
+        body: Container(
+          child: Text("Login Error"),
+        ),
+      ),
+    );
   }
 }
