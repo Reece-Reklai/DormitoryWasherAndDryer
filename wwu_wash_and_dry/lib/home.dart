@@ -17,9 +17,15 @@ class _WWUAppState extends State<WWUApp> {
   // TODO: Get Access Key
   var accessKey = "AuthFailed";
   void updateState() {
-    setState(() {
-      accessKey = "-1";
-    });
+    if (accessKey == "AuthFailed") {
+      setState(() {
+        accessKey = "-1";
+      });
+    } else {
+      setState(() {
+        accessKey = "1";
+      });
+    }
   }
 
   @override
