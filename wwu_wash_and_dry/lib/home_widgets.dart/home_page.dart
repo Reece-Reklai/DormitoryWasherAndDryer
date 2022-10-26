@@ -11,7 +11,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static const _floorList = ['F1', 'F2', 'F3', 'F4', 'F5'];
+  static const _foremanFloors = ['F2', 'F3', 'F4', 'F5', 'F6', 'F7'];
+  static const _condardFloors = ['C1', 'C2', 'C3', 'C4'];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,14 +21,24 @@ class _HomePageState extends State<HomePage> {
           title: const Text('WWU Wash and Dry'),
         ),
         body: Container(
-          margin: const EdgeInsets.all(2),
           child: Column(
             children: <Widget>[
-              const Text("Home Page"),
-              ElevatedButton(
-                  onPressed: () => {log("Sittner Chosen!")},
-                  child: const Text("Sittner")),
-              const DropDownList(_floorList),
+              const Text(
+                "Home Page",
+                style: TextStyle(fontSize: 30),
+              ),
+              TextButton(
+                onPressed: () => {log("Sittner Chosen!")},
+                child: const Text(
+                  "Sittner",
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              DropDownList("Foreman", _foremanFloors),
+              DropDownList("Conard", _condardFloors),
             ],
           ),
         ),
