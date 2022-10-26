@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LoginError extends StatelessWidget {
-  const LoginError({super.key});
+  final VoidCallback updateState;
+  const LoginError(this.updateState, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,9 +11,11 @@ class LoginError extends StatelessWidget {
         appBar: AppBar(
           title: const Text('WWU Wash and Dry'),
         ),
-        body: Container(
-          child: Text("Login Error"),
-        ),
+        body: Column(children: [
+          const Text("Login Error"),
+          ElevatedButton(
+              onPressed: updateState, child: const Text('Return to login')),
+        ]),
       ),
     );
   }

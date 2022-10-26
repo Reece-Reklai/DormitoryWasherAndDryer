@@ -15,9 +15,15 @@ class WWUApp extends StatefulWidget {
 
 class _WWUAppState extends State<WWUApp> {
   // TODO: Get Access Key
-  var accessKey = "-1";
+  var accessKey = "AuthFailed";
+  void updateState() {
+    setState(() {
+      accessKey = "-1";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Login(accessKey);
+    return Login(accessKey, updateState);
   }
 }
