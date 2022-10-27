@@ -14,16 +14,22 @@ class LoginPage extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('WWU Wash and Dry'),
+          backgroundColor: Colors.lightGreen.shade900,
         ),
         body: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const Text("WWU Wash and Dry Login"),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center, 
+
+            children: [
+            const Text("WWU Wash and Dry Login",
+            style: TextStyle(fontWeight: FontWeight.bold),),
+
             TextButton(
               onPressed: () => {log("Login Button Pressed!")},
               style: TextButton.styleFrom(
                 fixedSize: const Size.fromHeight(75.0),
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.blue,
+                backgroundColor: Colors.lightGreen.shade900,
               ),
               child: const Text(
                 'Login Using WWU Account',
