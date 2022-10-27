@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
             const Text("WWU Wash and Dry Login",
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
 
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
 
             TextButton(
               onPressed: updateState,

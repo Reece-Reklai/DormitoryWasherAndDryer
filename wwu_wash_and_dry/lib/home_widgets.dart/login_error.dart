@@ -21,7 +21,7 @@ class LoginError extends StatelessWidget {
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             
-              SizedBox(height: 25),
+            const SizedBox(height: 25),
 
               ElevatedButton(
                 onPressed: updateState,
