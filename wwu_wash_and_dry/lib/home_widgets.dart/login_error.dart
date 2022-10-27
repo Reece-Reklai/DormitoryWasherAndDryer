@@ -10,12 +10,30 @@ class LoginError extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('WWU Wash and Dry'),
+          backgroundColor: Colors.lightGreen.shade900,
         ),
-        body: Column(children: [
-          const Text("Login Error"),
-          ElevatedButton(
-              onPressed: updateState, child: const Text('Return to login')),
-        ]),
+        body: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Uh oh! There seems to have been an error",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            
+            SizedBox(height: 25),
+
+            ElevatedButton(
+              onPressed: updateState,
+              style: TextButton.styleFrom(
+                fixedSize: const Size.fromHeight(40.0),
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.lightGreen.shade900,
+              ),
+              child: const Text('Return to login page'),
+            )
+          ],
+        )),
       ),
     );
   }

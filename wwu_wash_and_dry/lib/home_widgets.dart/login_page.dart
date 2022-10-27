@@ -35,7 +35,6 @@ class LoginPage extends StatelessWidget {
               ),
               child: const Text(
                 'Login Using WWU Account',
-                // style: TextStyle(fontSize: 30.0),
               ),
             ),
           ]),
