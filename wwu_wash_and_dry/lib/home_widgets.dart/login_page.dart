@@ -6,7 +6,8 @@ import 'login_error.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  final VoidCallback updateState;
+  const LoginPage(this.updateState, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 25),
 
             TextButton(
-              onPressed: () => {log("Login Button Pressed!")},
+              onPressed: updateState,
               style: TextButton.styleFrom(
                 fixedSize: const Size.fromHeight(75.0),
                 foregroundColor: Colors.white,

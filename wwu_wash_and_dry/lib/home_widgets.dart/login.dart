@@ -13,7 +13,7 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     /// returns a corresponding widget depending on accessKey
     if (accessKey == "-1") {
-      return const LoginPage();
+      return LoginPage(updateState);
     } else if (accessKey == "AuthFailed") {
       return LoginError(updateState);
     } else {

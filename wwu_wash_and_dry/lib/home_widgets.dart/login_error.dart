@@ -13,27 +13,28 @@ class LoginError extends StatelessWidget {
           backgroundColor: Colors.lightGreen.shade900,
         ),
         body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "Uh oh! There seems to have been an error",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-            
-            SizedBox(height: 25),
-
-            ElevatedButton(
-              onPressed: updateState,
-              style: TextButton.styleFrom(
-                fixedSize: const Size.fromHeight(40.0),
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.lightGreen.shade900,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "Uh oh! There seems to have been an error",
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              child: const Text('Return to login page'),
-            )
-          ],
-        )),
+            
+              SizedBox(height: 25),
+
+              ElevatedButton(
+                onPressed: updateState,
+                style: TextButton.styleFrom(
+                  fixedSize: const Size.fromHeight(40.0),
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.lightGreen.shade900,
+                ),
+                child: const Text('Return to login page'),
+              )
+            ],
+          )
+        ),
       ),
     );
   }
