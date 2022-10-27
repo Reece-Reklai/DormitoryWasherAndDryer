@@ -19,10 +19,12 @@ class LoginPage extends StatelessWidget {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, 
-
             children: [
+
             const Text("WWU Wash and Dry Login",
-            style: TextStyle(fontWeight: FontWeight.bold),),
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
+
+            SizedBox(height: 25),
 
             TextButton(
               onPressed: () => {log("Login Button Pressed!")},
