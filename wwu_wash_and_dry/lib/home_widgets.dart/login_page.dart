@@ -15,10 +15,8 @@ class LoginPage extends StatelessWidget {
         appBar: AppBar(
           title: const Text('WWU Wash and Dry'),
         ),
-
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+        body: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             const Text("WWU Wash and Dry Login"),
             TextButton(
               onPressed: () => {log("Login Button Pressed!")},
@@ -32,7 +30,7 @@ class LoginPage extends StatelessWidget {
                 // style: TextStyle(fontSize: 30.0),
               ),
             ),
-          ]
+          ]),
         ),
       ),
     );
