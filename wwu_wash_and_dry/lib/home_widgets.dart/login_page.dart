@@ -17,17 +17,14 @@ class LoginPage extends StatelessWidget {
         ),
 
         body: Column(
-          // alignment
           mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.stretch,
-
           children: [
             const Text("WWU Wash and Dry Login"),
             TextButton(
               onPressed: () => {log("Login Button Pressed!")},
               style: TextButton.styleFrom(
-                fixedSize: Size.fromHeight(75),
-                primary: Colors.white,
+                fixedSize: const Size.fromHeight(75.0),
+                foregroundColor: Colors.white,
                 backgroundColor: Colors.blue,
               ),
               child: const Text(
@@ -36,30 +33,7 @@ class LoginPage extends StatelessWidget {
               ),
             ),
           ]
-          // mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          // children: <Widget> [
-          //   TextButton(
-          //     onPressed: () => {log("Login Button Pressed!")},
-          //     style: TextButton.styleFrom(
-          //       primary: Colors.white,
-          //       backgroundColor: Colors.blue
-          //     ),
-          //     child: const Text(
-          //       'Login Using WWU Account',
-          //       style: TextStyle(fontSize: 30.0),
-          //     ),
-          //   ),
-          // ],
         ),
-        
-        // body: Center (
-        //   margin: EdgeInsets.all(25),
-        //   child: FlatButton(
-        //     child: Text("Sign In", style: TextStyle(fontSize: 20.0),),
-        //     onPressed: (){},
-        //   ),
-        // )
       ),
     );
   }
