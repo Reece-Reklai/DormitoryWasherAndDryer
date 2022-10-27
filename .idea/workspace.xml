@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ded4c2c5-63ce-45a2-aa7d-409f5c4c43f2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/hello_world/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/hello_world/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello_world/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/hello_world/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello_world/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/hello_world/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello_world/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/hello_world/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello_world/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/hello_world/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello_world/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/hello_world/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello_world/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/hello_world/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwu_wash_and_dry/lib/home_widgets.dart/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wwu_wash_and_dry/lib/home_widgets.dart/login_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
