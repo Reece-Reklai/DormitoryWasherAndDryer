@@ -12,8 +12,25 @@ import 'package:wwu_wash_and_dry/home.dart';
 import 'package:wwu_wash_and_dry/home_widgets.dart/home_page.dart';
 import 'package:wwu_wash_and_dry/home_widgets.dart/login_error.dart';
 import 'package:wwu_wash_and_dry/home_widgets.dart/login_page.dart';
+import 'package:wwu_wash_and_dry/home_widgets.dart/login.dart';
 
 void main() {
+  testWidgets('Login returns a Login_page on recievieng a \'1\'',
+      (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+
+    void updateState() {}
+    await tester.pumpWidget(Login('1', updateState));
+    expect(find.text('Login Using WWU Account'), findsOneWidget);
+  });
+  testWidgets('Login returns a Login_page on recievieng a \'AuthFailed\'',
+      (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+
+    void updateState() {}
+    await tester.pumpWidget(Login('AuthFailed', updateState));
+    expect(find.text('Return to login page'), findsOneWidget);
+  });
   testWidgets('Error Page button press takes you to Login',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
