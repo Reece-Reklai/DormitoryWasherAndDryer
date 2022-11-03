@@ -1,28 +1,31 @@
+import "./machine.dart";
+
 // data for dorms, Note the lists are just brain storming.
 // I am going to make them into classes with this data embeded eventually.
 // List<Map<String, Object>>
 // 'id': int, 'type': 'Washer':'Dryer', 'floor': 'S':'F*':'C*'
-const _Sittner = [
-  {'id': 1, 'type': 'Washer', 'floor': 'S'},
-  {'id': 2, 'type': 'Washer', 'floor': 'S'},
-  {'id': 3, 'type': 'Washer', 'floor': 'S'},
-  {'id': 4, 'type': 'Washer', 'floor': 'S'},
-  {'id': 5, 'type': 'Washer', 'floor': 'S'},
-  {'id': 6, 'type': 'Washer', 'floor': 'S'},
-  {'id': 7, 'type': 'Washer', 'floor': 'S'},
-  {'id': 8, 'type': 'Washer', 'floor': 'S'},
-  {'id': 9, 'type': 'Washer', 'floor': 'S'},
-  {'id': 10, 'type': 'Washer', 'floor': 'S'},
-  {'id': 1, 'type': 'Dryer', 'floor': 'S'},
-  {'id': 2, 'type': 'Dryer', 'floor': 'S'},
-  {'id': 3, 'type': 'Dryer', 'floor': 'S'},
-  {'id': 4, 'type': 'Dryer', 'floor': 'S'},
-  {'id': 5, 'type': 'Dryer', 'floor': 'S'},
-  {'id': 6, 'type': 'Dryer', 'floor': 'S'},
-  {'id': 7, 'type': 'Dryer', 'floor': 'S'},
-  {'id': 8, 'type': 'Dryer', 'floor': 'S'},
-  {'id': 9, 'type': 'Dryer', 'floor': 'S'},
-  {'id': 10, 'type': 'Dryer', 'floor': 'S'},
+var Sittner = [
+  Machine('1', 'Washer', 'S'),
+  Machine('2', 'Washer', 'S'),
+  // {'id': 2, 'type': 'Washer', 'floor': 'S'},
+  // {'id': 3, 'type': 'Washer', 'floor': 'S'},
+  // {'id': 4, 'type': 'Washer', 'floor': 'S'},
+  // {'id': 5, 'type': 'Washer', 'floor': 'S'},
+  // {'id': 6, 'type': 'Washer', 'floor': 'S'},
+  // {'id': 7, 'type': 'Washer', 'floor': 'S'},
+  // {'id': 8, 'type': 'Washer', 'floor': 'S'},
+  // {'id': 9, 'type': 'Washer', 'floor': 'S'},
+  // {'id': 10, 'type': 'Washer', 'floor': 'S'},
+  // {'id': 1, 'type': 'Dryer', 'floor': 'S'},
+  // {'id': 2, 'type': 'Dryer', 'floor': 'S'},
+  // {'id': 3, 'type': 'Dryer', 'floor': 'S'},
+  // {'id': 4, 'type': 'Dryer', 'floor': 'S'},
+  // {'id': 5, 'type': 'Dryer', 'floor': 'S'},
+  // {'id': 6, 'type': 'Dryer', 'floor': 'S'},
+  // {'id': 7, 'type': 'Dryer', 'floor': 'S'},
+  // {'id': 8, 'type': 'Dryer', 'floor': 'S'},
+  // {'id': 9, 'type': 'Dryer', 'floor': 'S'},
+  // {'id': 10, 'type': 'Dryer', 'floor': 'S'},
 ];
 // List<List<Map<String, Object>>>
 const _Foreman = [

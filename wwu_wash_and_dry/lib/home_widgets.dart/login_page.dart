@@ -6,8 +6,8 @@ import 'login_error.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatelessWidget {
-  final VoidCallback updateState;
-  const LoginPage(this.updateState, {super.key});
+  final VoidCallback _updateState;
+  const LoginPage(this._updateState, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,17 +18,14 @@ class LoginPage extends StatelessWidget {
           backgroundColor: Colors.lightGreen.shade900,
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, 
-            children: [
-
-            const Text("WWU Wash and Dry Login",
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
-
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            const Text(
+              "WWU Wash and Dry Login",
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 25),
-
             TextButton(
-              onPressed: updateState,
+              onPressed: _updateState,
               style: TextButton.styleFrom(
                 fixedSize: const Size.fromHeight(75.0),
                 foregroundColor: Colors.white,
