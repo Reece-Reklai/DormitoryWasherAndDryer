@@ -48,6 +48,7 @@ class FloorLayout extends StatefulWidget {
   State<FloorLayout> createState() => _FloorLayout();
 }
 
+// Widget that dynamically displays the machine list
 class _FloorLayout extends State<FloorLayout> {
 
   Color getColor(Machine machine) {
