@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './home_widgets.dart/machine.dart';
+import 'home_widgets/machine.dart';
 // Created by Reece Reklai and Bradon Ladd
 
 // Test data to get a mock up and running

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wwu_wash_and_dry/home_widgets.dart/home_page.dart';
-import 'package:wwu_wash_and_dry/home_widgets.dart/login_error.dart';
-import 'package:wwu_wash_and_dry/home_widgets.dart/login_page.dart';
+import 'package:wwu_wash_and_dry/home_widgets/home_page.dart';
+import 'package:wwu_wash_and_dry/home_widgets/login_error.dart';
+import 'package:wwu_wash_and_dry/home_widgets/login_page.dart';
 
 class Login extends StatelessWidget {
   /// used for returning a corresponding widget depending on a String accessKey
