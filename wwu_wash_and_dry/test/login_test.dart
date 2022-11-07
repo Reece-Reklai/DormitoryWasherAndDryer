@@ -14,6 +14,7 @@ import 'package:wwu_wash_and_dry/home.dart';
 // import 'package:wwu_wash_and_dry/home_widgets/login_page.dart';
 import 'package:wwu_wash_and_dry/home_widgets/login.dart';
 
+// Edited by Adam Taylor
 void main() {
   testWidgets('Login returns a Login_page on recievieng a \'-1\'',
       (WidgetTester tester) async {
