@@ -71,5 +71,7 @@ void main() {
     await tester.tap(find.byType(TextButton));
     await tester.pump();
     expect(find.text('Sittner'), findsOneWidget);
+    expect(find.text('Foreman'), findsOneWidget);
+    expect(find.text('Conard'), findsOneWidget);
   });
 }
