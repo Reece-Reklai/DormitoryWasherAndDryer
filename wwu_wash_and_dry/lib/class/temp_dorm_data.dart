@@ -1,4 +1,4 @@
-import '../class/machine.dart';
+import 'machine.dart';
 
 // data for dorms, Note the lists are just brain storming.
 // I am going to make them into classes with this data embeded eventually.
@@ -7,6 +7,17 @@ import '../class/machine.dart';
 var Sittner = [
   Machine('1', 'Washer', 'S'),
   Machine('2', 'Washer', 'S'),
+  Machine('3', 'Washer', 'S'),
+  Machine('4', 'Washer', 'S'),
+  Machine('5', 'Washer', 'S'),
+  Machine('6', 'Washer', 'S'),
+  Machine('7', 'Washer', 'S'),
+  Machine('8', 'Washer', 'S'),
+  Machine('9', 'Washer', 'S'),
+  Machine('10', 'Washer', 'S'),
+  Machine('11', 'Washer', 'S'),
+  Machine('12', 'Washer', 'S'),
+  Machine('13', 'Washer', 'S'),
   // {'id': 2, 'type': 'Washer', 'floor': 'S'},
   // {'id': 3, 'type': 'Washer', 'floor': 'S'},
   // {'id': 4, 'type': 'Washer', 'floor': 'S'},

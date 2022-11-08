@@ -2,9 +2,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import './drop_down_list.dart';
-import './dorm_data.dart';
+import '../class/temp_dorm_data.dart';
 import '../class/machine.dart';
-import '../class/floor_layout.dart';
+import 'floor_layout.dart';
 
 // Implemented by Catherine Thomsen
 
@@ -20,7 +20,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: DropDownMain());
+    return const MaterialApp(
+        home: DropDownMain(), debugShowCheckedModeBanner: false);
   }
 }
 
@@ -49,37 +50,58 @@ class _DropDownMain extends State<DropDownMain> {
     );
   }
 
+
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('WWU Wash and Dry'),
-        ),
-        body: Column(
-          children: <Widget>[
-            const Text(
-              "Home Page",
-              style: TextStyle(fontSize: 30),
-            ),
-            TextButton(
-              onPressed: () => {
-                building = _sittner,
-                setState(() {
-                  updatePage("S1", _sittner);
-                })
-              },
-              child: const Text(
-                _sittner,
-                style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.black,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('WWU Wash and Dry'),
+        backgroundColor: const Color(0xFF656950),
+      ),
+      body: Container(
+          color: const Color.fromARGB(255, 177, 177, 177),
+          padding: const EdgeInsets.all(50),
+          child: Material(
+            elevation: 12,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.all(50),
+                  child: const Text(
+                    "Select a floor from the drop down menu",
+                    style: TextStyle(
+                        fontSize: 30, decoration: TextDecoration.underline),
+                  ),
                 ),
-              ),
+                Container(
+                  margin: const EdgeInsets.all(20),
+                  child: TextButton(
+                    onPressed: () => {
+                      building = _sittner,
+                      setState(() {
+                        updatePage("S1", _sittner);
+                      })
+                    },
+                    child: const Text(
+                      _sittner,
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(20),
+                  child: DropDownList(_forman, _foremanFloors, updatePage),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(20),
+                  child: DropDownList(_conard, _condardFloors, updatePage),
+                ),
+              ],
             ),
-            DropDownList(_forman, _foremanFloors, updatePage),
-            DropDownList(_conard, _condardFloors, updatePage),
-          ],
-        ),
-      );
+          )),
+    );
   }
 }

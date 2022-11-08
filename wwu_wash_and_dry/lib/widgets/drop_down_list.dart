@@ -15,9 +15,13 @@ class DropDownList extends StatelessWidget {
     return Center(
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
-          hint: Text(
-            title,
-            style: const TextStyle(fontSize: 30, color: Colors.black),
+          borderRadius: BorderRadius.circular(12),
+          hint: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Text(
+              title,
+              style: const TextStyle(fontSize: 24, color: Colors.black),
+            ),
           ),
           // value: dropdownValue,
           icon: const Icon(Icons.keyboard_arrow_down_rounded),
