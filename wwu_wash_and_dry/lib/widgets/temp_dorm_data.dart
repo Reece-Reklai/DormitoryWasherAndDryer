@@ -1,4 +1,4 @@
-import "./machine.dart";
+import '../class/machine.dart';
 
 // data for dorms, Note the lists are just brain storming.
 // I am going to make them into classes with this data embeded eventually.

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'home_widgets/login.dart';
+import 'widgets/login.dart';
 
 void main() {
   runApp(const WWUApp());

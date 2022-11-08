@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import './drop_down_list.dart';
 import './dorm_data.dart';
-import './machine.dart';
-import '../floor_layout.dart';
+import '../class/machine.dart';
+import '../class/floor_layout.dart';
 
 // Implemented by Catherine Thomsen
 
