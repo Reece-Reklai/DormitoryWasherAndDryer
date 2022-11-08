@@ -16,6 +16,6 @@ class Machine {
 
   // MOCK
   String getStatus() {
-    return "BROKEN";
+    return "AVAL";
   }
 }
