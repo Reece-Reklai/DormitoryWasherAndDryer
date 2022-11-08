@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './home_widgets.dart/machine.dart';
+import 'home_widgets/machine.dart';
 // Created by Reece Reklai and Bradon Ladd
 
 // Test data to get a mock up and running
@@ -48,6 +48,7 @@ class FloorLayout extends StatefulWidget {
   State<FloorLayout> createState() => _FloorLayout();
 }
 
+// Widget that dynamically displays the machine list
 class _FloorLayout extends State<FloorLayout> {
 
   Color getColor(Machine machine) {
