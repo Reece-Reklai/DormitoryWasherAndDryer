@@ -39,7 +39,7 @@ var Sittner = [
   // {'id': 10, 'type': 'Dryer', 'floor': 'S'},
 ];
 // List<List<Map<String, Object>>>
-const _Foreman = [
+const Foreman = [
   [
     {'id': 11, 'type': 'Washer', 'floor': 'F2'},
     {'id': 11, 'type': 'Dryer', 'floor': 'F2'},
@@ -75,7 +75,7 @@ const _Foreman = [
     {'id': 21, 'type': 'Dryer', 'floor': 'F7'},
   ],
 ];
-const _Conard = [
+const Conard = [
   [
     {'id': 22, 'type': 'Washer', 'floor': 'C1'},
     {'id': 23, 'type': 'Washer', 'floor': 'C1'},

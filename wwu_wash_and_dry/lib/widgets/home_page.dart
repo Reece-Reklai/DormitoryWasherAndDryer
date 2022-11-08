@@ -1,9 +1,8 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import './drop_down_list.dart';
 import '../class/temp_dorm_data.dart';
-import '../class/machine.dart';
+
 import 'floor_layout.dart';
 
 // Implemented by Catherine Thomsen
@@ -49,7 +48,6 @@ class _DropDownMain extends State<DropDownMain> {
       MaterialPageRoute(builder: (context) => FloorLayout(machines: Sittner)),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
