@@ -79,8 +79,9 @@ class _DropDownMain extends State<DropDownMain> {
                   margin: const EdgeInsets.all(50),
                   child: const Text(
                     "Select a floor from the drop down menu",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 30, decoration: TextDecoration.underline),
+                        fontSize: 30),
                   ),
                 ),
                 Container(
