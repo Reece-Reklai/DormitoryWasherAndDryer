@@ -10,10 +10,10 @@ class Building {
   }
 
   Building(
-      String buildingName, int numFloors, int totalDryer, int totalWasher) {
+      String buildingName, int numFloors, List<int> totalDryer, List<int> totalWasher) {
     this._buildingName = buildingName;
     for (var eachFloor = 1; eachFloor < numFloors + 1; eachFloor++) {
-      createFloor(eachFloor, totalDryer, totalWasher);
+      createFloor(eachFloor, totalDryer[eachFloor-1], totalWasher[eachFloor-1]);
     }
   }
 
