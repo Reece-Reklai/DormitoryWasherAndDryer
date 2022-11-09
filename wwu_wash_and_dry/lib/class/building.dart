@@ -1,31 +1,31 @@
-import 'dart:js_util';
-
 import 'package:wwu_wash_and_dry/class/floor.dart';
 
 class Building {
-  // ignore: empty_constructor_bodies
-  Building(this._buildingName, this._numFloors) {
-    
-  };
+  late String _buildingName;
+  List<Floor> _floorList = [];
 
-  int _numFloors;
-  final String _buildingName;
-  
+  void createFloor(int currFloor, int totalDryer, int totalWasher) {
+    var floor = new Floor(currFloor, totalDryer, totalWasher);
+    _floorList.add(floor);
+  }
 
-  
-  // final String _type;
-  // String _status = '';
+  Building(
+      String buildingName, int numFloors, int totalDryer, int totalWasher) {
+    this._buildingName = buildingName;
+    for (var eachFloor = 1; eachFloor < numFloors + 1; eachFloor++) {
+      createFloor(eachFloor, totalDryer, totalWasher);
+    }
+  }
 
   String get getBuildingName {
     return _buildingName;
   }
 
-  // get type => _type;
-  // get floor => _floor;
-  // get status => _status;
+  List<Floor> get getFloorList {
+    return _floorList;
+  }
 
-  // // MOCK
-  // String getStatus() {
-  //   return "AVAL";
-  // }
+  set setFloor(List<Floor> floorList) {
+    _floorList = floorList;
+  }
 }
