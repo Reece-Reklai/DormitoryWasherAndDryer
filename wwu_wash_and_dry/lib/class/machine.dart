@@ -1,17 +1,16 @@
-// Created by Catherine Thomsen and Bradon Ladd
-
 class Machine {
-  Machine(this._id, this._type, this._floor);
+  Machine(this._id, this._type);
+  Machine(this._id, this._type);
 
-  final String _id;
-  final String _floor;
-  
+  final int _id;
   final String _type;
-  String _status = '';
+  final String _selfReportStatus = '';
+
+  bool _status = true;
 
   get id => _id;
   get type => _type;
-  get floor => _floor;
+  get selfReportStatus => _selfReportStatus;
   get status => _status;
 
   // MOCK
