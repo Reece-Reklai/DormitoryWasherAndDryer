@@ -4,8 +4,10 @@ import 'dart:html' as html;
 import 'widgets/login.dart';
 
 void main() {
+  // collect access key with a querry to the current url
   String accessToken = (Uri.base.queryParameters["access_token"] ?? '')
       .toString(); //get parameter with attribute "para1"
+  // collect error with a querry to the current url
   String error = (Uri.base.queryParameters["error"] ?? '')
       .toString(); //get parameter with attribute "para2"
   runApp(WWUApp(accessToken, error));
@@ -21,10 +23,6 @@ class WWUApp extends StatefulWidget {
 }
 
 class _WWUAppState extends State<WWUApp> {
-  // TODO: Get Access Key
-  // Requires: Backend to set up Single Sign on Page
-  // when program is updated change default accessKey to equal -1
-
   var _accessKey = "-1";
   var _errorState = false;
   void _updateState() {
@@ -35,10 +33,9 @@ class _WWUAppState extends State<WWUApp> {
         _accessKey = "-1";
       });
     } else {
-      // TODO: Open single sign on and collect accesskey https://login.microsoftonline.com/d958f048-e431-4277-9c8d-ebfb75e7aa64/oauth2/v2.0/authorize?client_id=b011ad62-bda8-449f-99d3-519a3d973218&response_type=code&response_mode=query&scope=https://graph.microsoft.com/User.Read&redirect_uri=https://172.27.4.142:5000/login/callback
-      // URL for later:
+      // if the login button is clicked try to launch single sign on
       setState(() {
-        // This is a mock
+        // change webpage to the single sign on site and if it fails change key to AuthFailed to trigger error page.
         html.window.open(
             'https://login.microsoftonline.com/d958f048-e431-4277-9c8d-ebfb75e7aa64/oauth2/v2.0/authorize?client_id=b011ad62-bda8-449f-99d3-519a3d973218&response_type=code&response_mode=query&scope=https://graph.microsoft.com/User.Read&redirect_uri=https://172.27.4.142:5000/login/callback',
             "_self");
@@ -50,7 +47,9 @@ class _WWUAppState extends State<WWUApp> {
   @override
   Widget build(BuildContext context) {
     // returns the correct widget, error, login, or home page
-    // widgets dending on the accessKey
+    // widgets depending on the accessKey
+    // but sets access key depending on the queries for this websites
+    // access key and error
     if (!_errorState) {
       if (widget.error != '') {
         _accessKey = "AuthFailed";
