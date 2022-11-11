@@ -34,10 +34,6 @@ class _FloorLayout extends State<FloorLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('WWU Wash and Dry'),
-        backgroundColor: const Color(0xFF656950),
-      ),
       body: Container(
         padding: const EdgeInsets.all(24),
         color: const Color.fromARGB(255, 177, 177, 177),

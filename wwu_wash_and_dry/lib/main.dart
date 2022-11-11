@@ -10,7 +10,7 @@ void main() {
   // collect error with a querry to the current url
   String error = (Uri.base.queryParameters["error"] ?? '')
       .toString(); //get parameter with attribute "para2"
-  runApp(WWUApp(accessToken, error));
+  runApp(WWUApp("hi", error));
 }
 
 class WWUApp extends StatefulWidget {
