@@ -5,7 +5,7 @@ import 'widgets/login.dart';
 
 void main() {
   // collect access key with a querry to the current url
-  String accessToken = (Uri.base.queryParameters["access_token"] ?? '')
+  String accessToken = (Uri.base.queryParameters["token"] ?? '')
       .toString(); //get parameter with attribute "para1"
   // collect error with a querry to the current url
   String error = (Uri.base.queryParameters["error"] ?? '')
