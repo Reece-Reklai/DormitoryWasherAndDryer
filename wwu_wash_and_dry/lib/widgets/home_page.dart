@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../class/machine.dart';
 import './drop_down_list.dart';
 import '../class/temp_dorm_data.dart';
 
@@ -79,8 +79,7 @@ class _DropDownMain extends State<DropDownMain> {
                   child: const Text(
                     "Select a floor from the drop down menu",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 30),
+                    style: TextStyle(fontSize: 30),
                   ),
                 ),
                 Container(

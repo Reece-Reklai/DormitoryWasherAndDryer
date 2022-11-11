@@ -69,7 +69,7 @@ class _FloorLayout extends State<FloorLayout> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
                             title: Text(
-                                '${widget.machines[i].type} ${widget.machines[i].id}'),
+                                '${widget.machines[i].getType} ${widget.machines[i].getID}'),
                             tileColor: getColor(widget.machines[i]),
 
                             // This will open Team 2's self report widget when it is completed
@@ -114,7 +114,7 @@ class _FloorLayout extends State<FloorLayout> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
                             title: Text(
-                                '${widget.machines[i].type} ${widget.machines[i].id}'),
+                                '${widget.machines[i].getType} ${widget.machines[i].getID}'),
                             tileColor: getColor(widget.machines[i]),
 
                             // This will open Team 2's self report widget when it is completed
