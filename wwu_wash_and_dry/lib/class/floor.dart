@@ -4,45 +4,28 @@ import 'package:wwu_wash_and_dry/widgets/login_error.dart';
 
 class Floor {
   late int _floorLevel;
+  late List<Machine> _machineList;
   late List<Machine> _dryerList = [];
   late List<Machine> _washerList = [];
 
-  Floor(int floorLevel, List<String> totalDryerMachine,
-      List<String> totalWasherMachine) {
+  Floor(int floorLevel, List<Machine> machineList) {
     _floorLevel = floorLevel;
-    _dryerList = generateMachineListTEST(totalDryerMachine, "Dryers");
-    _washerList = generateMachineListTEST(totalWasherMachine, "Washers");
+    _machineList = machineList;
+    _dryerList = generateMachineListTEST(_machineList, "Dryer");
+    _washerList = generateMachineListTEST(_machineList, "Washer");
   }
 
-  List<Machine> generateMachineListTEST(List<String> totalMachine, String machineType) {
+  List<Machine> generateMachineListTEST(
+      List<Machine> totalMachine, String machineType) {
     List<Machine> list = [];
 
-    for (var each in totalMachine) {
-      var newMachine = Machine(each, machineType, "", true);
-      list.add(newMachine);
+    for (var each in _machineList) {
+      if (each.getType == machineType) {
+        list.add(each);
+      }
     }
     return list;
   }
-
-  // void generateMachineList(List<String> totalMachine, String machineType) {
-  //   if (machineType == "Dryers") {
-  //     for (var eachMachine = 0;
-  //         eachMachine < totalMachine.length;
-  //         eachMachine++) {
-  //       var currMachine =
-  //           new Machine(totalMachine[eachMachine], machineType, "", true);
-  //       _dryerList.add(currMachine);
-  //     }
-  //   } else {
-  //     for (var eachMachine = 0;
-  //         eachMachine < totalMachine.length;
-  //         eachMachine++) {
-  //       var currMachine =
-  //           new Machine(totalMachine[eachMachine], machineType, "", true);
-  //       _washerList.add(currMachine);
-  //     }
-  //   }
-  // }
 
   int get getFloorLevel {
     return _floorLevel;

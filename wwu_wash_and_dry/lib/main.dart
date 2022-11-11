@@ -58,7 +58,6 @@ class _WWUAppState extends State<WWUApp> {
         _accessKey = widget.accessToken;
       }
     }
-    // TODO: used to be _accessKey
-    return Login("1", _updateState);
+    return Login(_accessKey, _updateState);
   }
 }

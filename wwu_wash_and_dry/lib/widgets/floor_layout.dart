@@ -10,7 +10,6 @@ import "../class/floor.dart";
 class FloorLayout extends StatefulWidget {
   FloorLayout(
       {super.key,
-      required this.machines,
       required this.floorObj,
       this.building = ''});
 
@@ -18,9 +17,6 @@ class FloorLayout extends StatefulWidget {
   String floor = '';
 
   final Floor floorObj;
-  final List<Machine> machines;
-  // final List<Machine> washers;
-  // final List<Machine> dryers;
 
   @override
   State<FloorLayout> createState() => _FloorLayout();
@@ -64,7 +60,7 @@ class _FloorLayout extends State<FloorLayout> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: widget.machines.length,
+                    itemCount: widget.floorObj.getWasherList.length,
                     itemBuilder: (context, i) {
                       return Container(
                         margin: const EdgeInsets.all(4),
@@ -76,10 +72,10 @@ class _FloorLayout extends State<FloorLayout> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
                             title: Text(
-                                '${widget.machines[i].getType} ${widget.machines[i].getID}'),
+                                '${widget.floorObj.getWasherList[i].getType} ${widget.floorObj.getWasherList[i].getID}'),
                             // '${widget.floorObj.getDryerList} ${widget.machines[i].getID}'),
 
-                            tileColor: getColor(widget.machines[i]),
+                            tileColor: getColor(widget.floorObj.getWasherList[i]),
 
                             // This will open Team 2's self report widget when it is completed
                             trailing: ElevatedButton(
@@ -111,7 +107,7 @@ class _FloorLayout extends State<FloorLayout> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: widget.machines.length,
+                    itemCount: widget.floorObj.getDryerList.length,
                     itemBuilder: (context, i) {
                       return Container(
                         margin: const EdgeInsets.all(4),
@@ -123,8 +119,8 @@ class _FloorLayout extends State<FloorLayout> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
                             title: Text(
-                                '${widget.machines[i].getType} ${widget.machines[i].getID}'),
-                            tileColor: getColor(widget.machines[i]),
+                                '${widget.floorObj.getDryerList[i].getType} ${widget.floorObj.getDryerList[i].getID}'),
+                            tileColor: getColor(widget.floorObj.getDryerList[i]),
 
                             // This will open Team 2's self report widget when it is completed
                             trailing: ElevatedButton(

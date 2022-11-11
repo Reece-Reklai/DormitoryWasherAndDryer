@@ -45,7 +45,7 @@ class _DropDownMain extends State<DropDownMain> {
   bool floorChoosen = false;
 
   // mock Floor object
-  Floor testFloor = Floor(1, ['test'], ['test']);
+  // Floor testFloor = Floor(1, ['test'], ['test']);
 
   // Needs to pass in washers and dyers
   void updatePage(String selectedFloor, String selectedBuilding) {
@@ -60,15 +60,14 @@ class _DropDownMain extends State<DropDownMain> {
       floor = int.parse(selectedFloor.substring(1)) - 1; // starts on 1st
       machines = Conard[floor];
     }
+    Floor floorObj = Floor(floor, machines);
     Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => FloorLayout(
-            machines: machines,
-            floorObj: testFloor,
+            floorObj: floorObj,
           ),
-        )
-        );
+        ));
   }
 
   @override
