@@ -4,9 +4,9 @@ class Building {
   late String _buildingName;
   List<Floor> _floorList = [];
 
-  void createFloor(
-      int currFloor, List<String> dryerIDs, List<String> washerIDs) {
-    var floor = new Floor(currFloor, dryerIDs, washerIDs);
+  void createFloor(int currFloor, List<String> dryerIDs, List<String> washerIDs) {
+    var floor = Floor(currFloor, []);
+    // var floor = new Floor(currFloor, dryerIDs, washerIDs);
     _floorList.add(floor);
   }
 

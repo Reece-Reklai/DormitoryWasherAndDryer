@@ -60,6 +60,7 @@ class _DropDownMain extends State<DropDownMain> {
       floor = int.parse(selectedFloor.substring(1)) - 1; // starts on 1st
       machines = Conard[floor];
     }
+    
     Floor floorObj = Floor(floor, machines);
     Navigator.push(
         context,

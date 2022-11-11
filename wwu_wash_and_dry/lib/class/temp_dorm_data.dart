@@ -6,18 +6,18 @@ import 'machine.dart';
 // 'id': int, 'type': 'Washer':'Dryer', 'floor': 'S':'F*':'C*'
 
 var Sittner = [
-  Machine('1', 'Washer', "AVAL", true),
-  Machine('2', 'Washer', "AVAL", true),
+  Machine('1', 'Washer', "BUSY", true),
+  Machine('2', 'Washer', "BUSY", true),
   Machine('3', 'Washer', "AVAL", true),
   Machine('4', 'Washer', "AVAL", true),
-  Machine('5', 'Washer', "AVAL", true),
+  Machine('5', 'Washer', "BUSY", true),
   Machine('6', 'Washer', "AVAL", true),
   Machine('7', 'Washer', "AVAL", true),
   Machine('8', 'Dryer', "AVAL", true),
   Machine('9', 'Dryer', "AVAL", true),
   Machine('10', 'Dryer', "AVAL", true),
   Machine('11', 'Dryer', "AVAL", true),
-  Machine('12', 'Dryer', "AVAL", true),
+  Machine('12', 'Dryer', "BUSY", true),
   Machine('13', 'Dryer', "AVAL", true),
   // {'id': 2, 'type': 'Washer', 'floor': 'S'},
   // {'id': 3, 'type': 'Washer', 'floor': 'S'},
