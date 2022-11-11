@@ -15,7 +15,7 @@ class LoginPage extends StatelessWidget {
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             const Text(
-              "WWU Wash and Dry Login",
+              'WWU Wash and Dry Login',
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 25),

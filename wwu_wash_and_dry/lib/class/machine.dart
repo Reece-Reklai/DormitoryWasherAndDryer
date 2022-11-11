@@ -1,18 +1,42 @@
-// Created by Catherine Thomsen and Bradon Ladd
+import 'package:wwu_wash_and_dry/class/floor.dart';
 
 class Machine {
-  Machine(this._id, this._type, this._floor);
+  late String _id;
+  late String _type;
+  late String _selfReportStatus;
+  late bool _isAvailable;
 
-  final String _id;
-  final String _floor;
-  
-  final String _type;
-  String _status = '';
+  Machine(String id, String type, String selfReportStatus, bool isAvailable) {
+    this._id = id;
+    this._type = type;
+    this._selfReportStatus = selfReportStatus;
+    this._isAvailable = isAvailable;
+  }
 
-  get id => _id;
-  get type => _type;
-  get floor => _floor;
-  get status => _status;
+  String get getID {
+    return _id;
+  }
+
+  String get getType {
+    return _type;
+  }
+
+  String get getSelfReportStatus {
+    return _selfReportStatus;
+  }
+
+  bool get getIsAvailable {
+    return _isAvailable;
+  }
+
+
+  set setSelfReportStatus(String selfReportStatus) {
+    _selfReportStatus = selfReportStatus;
+  }
+
+  set setIsAvailable(bool isAvailable) {
+    _isAvailable = isAvailable;
+  }
 
   // MOCK
   String getStatus() {
