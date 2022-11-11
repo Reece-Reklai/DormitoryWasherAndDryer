@@ -1,63 +1,63 @@
 import 'package:flutter/material.dart';
-import 'dart:html' as html;
 
-import 'widgets/login.dart';
+void main() => runApp(new MyApp());
 
-void main() {
-  // collect access key with a querry to the current url
-  String accessToken = (Uri.base.queryParameters["token"] ?? '')
-      .toString(); //get parameter with attribute "para1"
-  // collect error with a querry to the current url
-  String error = (Uri.base.queryParameters["error"] ?? '')
-      .toString(); //get parameter with attribute "para2"
-  runApp(WWUApp("hi", error));
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: 'Flutter Demo',
+      theme: new ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
 }
 
-class WWUApp extends StatefulWidget {
-  final String accessToken;
-  final String error;
-  const WWUApp(this.accessToken, this.error, {super.key});
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
 
   @override
-  State<WWUApp> createState() => _WWUAppState();
+  _MyHomePageState createState() => new _MyHomePageState();
 }
 
-class _WWUAppState extends State<WWUApp> {
-  var _accessKey = "-1";
-  var _errorState = false;
-  void _updateState() {
-    if (_accessKey == 'AuthFailed') {
-      // if in error state, on function use, change state number
-      // back to the Login page's state string
-      setState(() {
-        _accessKey = '-1';
-      });
-    } else {
-      // if the login button is clicked try to launch single sign on
-      setState(() {
-        // change webpage to the single sign on site and if it fails change key to AuthFailed to trigger error page.
-        html.window.open(
-            'https://login.microsoftonline.com/d958f048-e431-4277-9c8d-ebfb75e7aa64/oauth2/v2.0/authorize?client_id=b011ad62-bda8-449f-99d3-519a3d973218&response_type=code&response_mode=query&scope=https://graph.microsoft.com/User.Read&redirect_uri=https://172.27.4.142:5000/login/callback',
-            "_self");
-        _accessKey = "AuthFailed";
-      });
-    }
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    // returns the correct widget, error, login, or home page
-    // widgets depending on the accessKey
-    // but sets access key depending on the queries for this websites
-    // access key and error
-    if (!_errorState) {
-      if (widget.error != '') {
-        _accessKey = "AuthFailed";
-        _errorState = true;
-      } else if (widget.accessToken != '') {
-        _accessKey = widget.accessToken;
-      }
-    }
-    return Login(_accessKey, _updateState);
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(widget.title),
+      ),
+      body: new Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Text(
+              'You have pushed the button this many times:',
+            ),
+            new Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.display1,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: new Icon(Icons.add),
+      ),
+    );
   }
 }
