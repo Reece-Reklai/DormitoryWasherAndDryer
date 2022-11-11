@@ -17,7 +17,7 @@ class LoginError extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "Uh oh! There seems to have been an error",
+              'Uh oh! There seems to have been an error',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 25),
