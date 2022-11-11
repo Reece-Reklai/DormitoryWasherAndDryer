@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../class/machine.dart';
+import "../class/floor.dart";
 // Created by Reece Reklai and Bradon Ladd
 
 // When the respective floor is clicked on the homepage, the class
@@ -8,12 +9,18 @@ import '../class/machine.dart';
 // to the self-report information(? maybe)
 class FloorLayout extends StatefulWidget {
   FloorLayout(
-      {super.key, required this.machines, this.floor = '', this.building = ''});
+      {super.key,
+      required this.machines,
+      required this.floorObj,
+      this.building = ''});
 
   String building = '';
   String floor = '';
 
+  final Floor floorObj;
   final List<Machine> machines;
+  // final List<Machine> washers;
+  // final List<Machine> dryers;
 
   @override
   State<FloorLayout> createState() => _FloorLayout();
@@ -70,6 +77,8 @@ class _FloorLayout extends State<FloorLayout> {
                                 borderRadius: BorderRadius.circular(20.0)),
                             title: Text(
                                 '${widget.machines[i].getType} ${widget.machines[i].getID}'),
+                            // '${widget.floorObj.getDryerList} ${widget.machines[i].getID}'),
+
                             tileColor: getColor(widget.machines[i]),
 
                             // This will open Team 2's self report widget when it is completed

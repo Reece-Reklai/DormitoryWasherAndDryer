@@ -29,7 +29,6 @@ class Machine {
     return _isAvailable;
   }
 
-
   set setSelfReportStatus(String selfReportStatus) {
     _selfReportStatus = selfReportStatus;
   }

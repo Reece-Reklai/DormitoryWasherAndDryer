@@ -1,7 +1,10 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
 import '../class/machine.dart';
 import './drop_down_list.dart';
 import '../class/temp_dorm_data.dart';
+import "../class/floor.dart";
 
 import 'floor_layout.dart';
 
@@ -33,13 +36,16 @@ class DropDownMain extends StatefulWidget {
 
 class _DropDownMain extends State<DropDownMain> {
   static const _foremanFloors = ['F2', 'F3', 'F4', 'F5', 'F6', 'F7'];
-  static const _condardFloors = ['C1', 'C2', 'C3', 'C4'];
+  static const _conardFloors = ['C1', 'C2', 'C3', 'C4'];
   static const String _forman = "Foreman";
   static const String _conard = "Conard";
   static const String _sittner = "Sittner";
   String floor = 'none';
   String building = 'none';
   bool floorChoosen = false;
+
+  // mock Floor object
+  Floor testFloor = Floor(1, ['test'], ['test']);
 
   // Needs to pass in washers and dyers
   void updatePage(String selectedFloor, String selectedBuilding) {
@@ -55,9 +61,14 @@ class _DropDownMain extends State<DropDownMain> {
       machines = Conard[floor];
     }
     Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => FloorLayout(machines: machines)),
-    );
+        context,
+        MaterialPageRoute(
+          builder: (context) => FloorLayout(
+            machines: machines,
+            floorObj: testFloor,
+          ),
+        )
+        );
   }
 
   @override
@@ -106,7 +117,7 @@ class _DropDownMain extends State<DropDownMain> {
                 ),
                 Container(
                   margin: const EdgeInsets.all(20),
-                  child: DropDownList(_conard, _condardFloors, updatePage),
+                  child: DropDownList(_conard, _conardFloors, updatePage),
                 ),
               ],
             ),

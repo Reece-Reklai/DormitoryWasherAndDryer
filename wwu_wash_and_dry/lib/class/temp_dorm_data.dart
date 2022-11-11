@@ -4,6 +4,7 @@ import 'machine.dart';
 // I am going to make them into classes with this data embeded eventually.
 // List<Map<String, Object>>
 // 'id': int, 'type': 'Washer':'Dryer', 'floor': 'S':'F*':'C*'
+
 var Sittner = [
   Machine('1', 'Washer', "AVAL", true),
   Machine('2', 'Washer', "AVAL", true),
@@ -64,6 +65,9 @@ var Foreman = [
   [
     Machine('16', 'Washer', "AVAL", true),
     Machine('17', 'Washer', "AVAL", true),
+    Machine('188', 'Dryer', "AVAL", true),
+    Machine('177', 'Dryer', "AVAL", true),
+
     // {'id': 16, 'type': 'Washer', 'floor': 'F5'},
     // {'id': 17, 'type': 'Washer', 'floor': 'F5'},
     // {'id': 16, 'type': 'Dryer', 'floor': 'F5'},
@@ -105,6 +109,11 @@ var Conard = [
   ],
   [
     Machine('26', 'Washer', "AVAL", true),
+    Machine('26', 'Washer', "AVAL", true),
+    Machine('26', 'Washer', "AVAL", true),
+    Machine('26', 'Washer', "AVAL", true),
+    Machine('26', 'Washer', "AVAL", true),
+
     // {'id': 26, 'type': 'Washer', 'floor': 'C3'},
     // {'id': 26, 'type': 'Dryer', 'floor': 'C3'},
   ],
