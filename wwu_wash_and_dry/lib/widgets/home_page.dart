@@ -40,7 +40,7 @@ class _DropDownMain extends State<DropDownMain> {
   String floor = 'none';
   String building = 'none';
   List<Machine> currentDisplay = Sittner;
-  String title = "Sittner";
+  String title = _sittner;
   String changeTitle = "";
 
   // Needs to pass in washers and dyers
@@ -49,15 +49,15 @@ class _DropDownMain extends State<DropDownMain> {
     var floor = 0;
     if (selectedBuilding == _sittner) {
       machines = Sittner;
-      changeTitle = "Sittner";
+      changeTitle = _sittner;
     } else if (selectedBuilding == _forman) {
       floor = int.parse(selectedFloor.substring(1)) - 2; // starts on 2nd
       machines = Foreman[floor];
-      changeTitle = "Foreman";
+      changeTitle = _forman;
     } else if (selectedBuilding == _conard) {
       floor = int.parse(selectedFloor.substring(1)) - 1; // starts on 1st
       machines = Conard[floor];
-      changeTitle = "Connard";
+      changeTitle = _conard;
     }
     setState(() {
       currentDisplay = machines;
@@ -75,34 +75,37 @@ class _DropDownMain extends State<DropDownMain> {
       ),
       body: Column(
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Align (
-                  alignment: FractionalOffset.topCenter,
-                  child: TextButton(
-                    child: Text("Sittner"),
-                    onPressed:(){
-                      building = _sittner;
-                      setState(() {
-                        updatePage("S1", _sittner);
-                      });
-                    },
+          Center(
+            child: Row(
+              children: <Widget>[
+                Container(
+                  child: Align(
+                    alignment: FractionalOffset.topCenter,
+                    child: TextButton(
+                      child: const Text(
+                        _sittner,
+                        style: TextStyle(fontSize: 24, color: Colors.black),
+                      ),
+                      onPressed: () {
+                        building = _sittner;
+                        setState(() {
+                          updatePage("S1", _sittner);
+                        });
+                      },
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                child: DropDownList(_forman, _foremanFloors, updatePage),
-              ),
-              Container(
-                child: DropDownList(_conard, _condardFloors, updatePage),
-              ),
-            ],
+                Container(
+                  child: DropDownList(_forman, _foremanFloors, updatePage),
+                ),
+                Container(
+                  child: DropDownList(_conard, _condardFloors, updatePage),
+                ),
+              ],
+            ),
           ),
-          Expanded(
-            child: FloorLayout(machines: currentDisplay)
-          ),
-        ], 
+          Expanded(child: FloorLayout(machines: currentDisplay)),
+        ],
       ),
     );
   }
