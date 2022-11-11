@@ -12,9 +12,9 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// returns a corresponding widget depending on accessKey
-    if (_accessKey == "-1") {
+    if (_accessKey == '-1') {
       return LoginPage(_updateState);
-    } else if (_accessKey == "AuthFailed") {
+    } else if (_accessKey == 'AuthFailed') {
       return LoginError(_updateState);
     } else {
       // any keys that aren't failure or the login -1 page are valid
