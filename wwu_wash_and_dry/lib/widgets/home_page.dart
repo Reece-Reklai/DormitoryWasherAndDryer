@@ -43,9 +43,20 @@ class _DropDownMain extends State<DropDownMain> {
 
   // Needs to pass in washers and dyers
   void updatePage(String selectedFloor, String selectedBuilding) {
+    List<Machine> machines = [];
+    var floor = 0;
+    if (selectedBuilding == _sittner) {
+      machines = Sittner;
+    } else if (selectedBuilding == _forman) {
+      floor = int.parse(selectedFloor.substring(1)) - 2; // starts on 2nd
+      machines = Foreman[floor];
+    } else if (selectedBuilding == _conard) {
+      floor = int.parse(selectedFloor.substring(1)) - 1; // starts on 1st
+      machines = Conard[floor];
+    }
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => FloorLayout(machines: Sittner)),
+      MaterialPageRoute(builder: (context) => FloorLayout(machines: machines)),
     );
   }
 
@@ -67,8 +78,9 @@ class _DropDownMain extends State<DropDownMain> {
                   margin: const EdgeInsets.all(50),
                   child: const Text(
                     "Select a floor from the drop down menu",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 30, decoration: TextDecoration.underline),
+                        fontSize: 30),
                   ),
                 ),
                 Container(
