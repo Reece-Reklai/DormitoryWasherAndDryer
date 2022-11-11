@@ -5,12 +5,17 @@ import 'widgets/login.dart';
 
 void main() {
   // collect access key with a querry to the current url
-  String accessToken = (Uri.base.queryParameters["token"] ?? '')
-      .toString(); //get parameter with attribute "para1"
+  String accessToken = (Uri.base.queryParameters["token"] ?? '').toString();
   // collect error with a querry to the current url
-  String error = (Uri.base.queryParameters["error"] ?? '')
-      .toString(); //get parameter with attribute "para2"
-  runApp(WWUApp("hi", error));
+  String error = (Uri.base.queryParameters["error"] ?? '').toString();
+
+  // continue using localhost if you start on localhost
+  // WARNING: this completely dissables single sign on and all
+  // of its features
+  if (Uri.base.toString().contains('localhost')) {
+    accessToken = 'This_token_has_no_features';
+  }
+  runApp(WWUApp(accessToken, error));
 }
 
 class WWUApp extends StatefulWidget {

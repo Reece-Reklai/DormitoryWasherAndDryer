@@ -8,7 +8,9 @@ import 'floor_layout.dart';
 // Implemented by Catherine Thomsen and Redesigned the UI
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  // possibly needed for retrieving data from backend
+  final String singleSignOnKey;
+  const HomePage(this.singleSignOnKey, {super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
