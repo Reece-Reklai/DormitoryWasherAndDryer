@@ -7,11 +7,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:wwu_wash_and_dry/lib/main.dart';
 
-// import 'package:wwu_wash_and_dry/home_widgets/home_page.dart';
-// import 'package:wwu_wash_and_dry/home_widgets/login_error.dart';
-// import 'package:wwu_wash_and_dry/home_widgets/login_page.dart';
+import 'package:wwu_wash_and_dry/main.dart';
 import 'package:wwu_wash_and_dry/widgets/login.dart';
 
 void main() {
@@ -45,26 +42,34 @@ void main() {
     await tester.pumpWidget(Login('asdfasljdkh', updateState));
     expect(find.text('Sittner'), findsOneWidget);
   });
-  testWidgets('Error Page button press takes you to Login',
+  testWidgets('default WWUApp starts on Login', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const WWUApp('', ''));
+    expect(find.text('Login Using WWU Account'), findsOneWidget);
+  });
+
+  testWidgets('Error WWU starts on Error Page', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const WWUApp('dasdfs', '1'));
+    expect(find.text('Return to login page'), findsOneWidget);
+  });
+
+  testWidgets('Error Page click sends you to login',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const WWUApp());
+    await tester.pumpWidget(const WWUApp('dasdfs', '1'));
     expect(find.text('Return to login page'), findsOneWidget);
 
     await tester.tap(find.byType(ElevatedButton));
     await tester.pump();
-    expect(find.text('Login Using WWU Account'), findsOneWidget);
+    expect(find.text('Return to login page'), findsOneWidget);
   });
 
   testWidgets('Login Page Button takes you to Home',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
 
-    await tester.pumpWidget(const WWUApp());
-    expect(find.text('Return to login page'), findsOneWidget);
-
-    await tester.tap(find.byType(ElevatedButton));
-    await tester.pump();
+    await tester.pumpWidget(const WWUApp('', ''));
     expect(find.text('Login Using WWU Account'), findsOneWidget);
 
     await tester.tap(find.byType(TextButton));
