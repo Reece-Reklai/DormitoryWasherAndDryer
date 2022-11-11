@@ -7,7 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:wwu_wash_and_dry/main.dart';
 import 'package:wwu_wash_and_dry/widgets/login.dart';
 

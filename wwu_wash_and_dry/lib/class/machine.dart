@@ -5,9 +5,9 @@ class Machine {
 
   final String _id;
   final String _floor;
-  
+
   final String _type;
-  String _status = '';
+  final String _status = '';
 
   get id => _id;
   get type => _type;

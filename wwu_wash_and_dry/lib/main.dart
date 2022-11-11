@@ -26,11 +26,11 @@ class _WWUAppState extends State<WWUApp> {
   var _accessKey = "-1";
   var _errorState = false;
   void _updateState() {
-    if (_accessKey == "AuthFailed") {
+    if (_accessKey == 'AuthFailed') {
       // if in error state, on function use, change state number
       // back to the Login page's state string
       setState(() {
-        _accessKey = "-1";
+        _accessKey = '-1';
       });
     } else {
       // if the login button is clicked try to launch single sign on

@@ -2,35 +2,6 @@ import 'package:flutter/material.dart';
 import '../class/machine.dart';
 // Created by Reece Reklai and Bradon Ladd
 
-// Test data to get a mock up and running
-List<String> washers = [
-  "Washer 1",
-  "Washer 2",
-  "Washer 3",
-  "Washer 4",
-  "Washer 5",
-  "Washer 6"
-];
-List<Color> availability = [
-  Colors.green,
-  Colors.green,
-  Colors.green,
-  Colors.red,
-  Colors.yellow,
-  Colors.green
-];
-
-// Dummy classes for washers and dryers
-class Washer {
-  String name = 'null';
-  String availability = 'null';
-}
-
-class Dryer {
-  String name = 'null';
-  String availability = 'null';
-}
-
 // When the respective floor is clicked on the homepage, the class
 // governing the homepage will dynamically generate a FloorLayout class
 // and pass in the list of washers, dryers, their availability, and a reference
@@ -51,9 +22,9 @@ class FloorLayout extends StatefulWidget {
 // Widget that dynamically displays the machine list
 class _FloorLayout extends State<FloorLayout> {
   Color getColor(Machine machine) {
-    if (machine.getStatus() == "AVAL") {
+    if (machine.getStatus() == 'AVAL') {
       return Colors.green;
-    } else if (machine.getStatus() != "AVAL") {
+    } else if (machine.getStatus() != 'AVAL') {
       return Colors.red;
     } else {
       return Colors.grey;
@@ -79,7 +50,7 @@ class _FloorLayout extends State<FloorLayout> {
                 Container(
                   margin: const EdgeInsets.all(12),
                   child: const Text(
-                    "Washers",
+                    'Washers',
                     style: TextStyle(
                         fontSize: 30, decoration: TextDecoration.underline),
                   ),
@@ -98,7 +69,7 @@ class _FloorLayout extends State<FloorLayout> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
                             title: Text(
-                                "${widget.machines[i].type} ${widget.machines[i].id}"),
+                                '${widget.machines[i].type} ${widget.machines[i].id}'),
                             tileColor: getColor(widget.machines[i]),
 
                             // This will open Team 2's self report widget when it is completed
@@ -110,7 +81,7 @@ class _FloorLayout extends State<FloorLayout> {
                                 context: context,
                                 builder: (BuildContext context) =>
                                     const AlertDialog(
-                                  title: Text("Dummy Alert Dialog"),
+                                  title: Text('Dummy Alert Dialog'),
                                 ),
                               ),
                               child: const Icon(Icons.report),
@@ -124,7 +95,7 @@ class _FloorLayout extends State<FloorLayout> {
                 Container(
                   margin: const EdgeInsets.all(12),
                   child: const Text(
-                    "Dryers",
+                    'Dryers',
                     style: TextStyle(
                         fontSize: 30, decoration: TextDecoration.underline),
                   ),
@@ -143,7 +114,7 @@ class _FloorLayout extends State<FloorLayout> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
                             title: Text(
-                                "${widget.machines[i].type} ${widget.machines[i].id}"),
+                                '${widget.machines[i].type} ${widget.machines[i].id}'),
                             tileColor: getColor(widget.machines[i]),
 
                             // This will open Team 2's self report widget when it is completed
@@ -155,7 +126,7 @@ class _FloorLayout extends State<FloorLayout> {
                                 context: context,
                                 builder: (BuildContext context) =>
                                     const AlertDialog(
-                                  title: Text("Dummy Alert Dialog"),
+                                  title: Text('Dummy Alert Dialog'),
                                 ),
                               ),
                               child: const Icon(Icons.report),
