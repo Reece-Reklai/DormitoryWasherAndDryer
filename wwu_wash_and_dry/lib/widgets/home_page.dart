@@ -5,7 +5,7 @@ import '../class/temp_dorm_data.dart';
 
 import 'floor_layout.dart';
 
-// Implemented by Catherine Thomsen
+// Implemented by Catherine Thomsen and Redesigned the UI
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -39,7 +39,9 @@ class _DropDownMain extends State<DropDownMain> {
   static const String _sittner = "Sittner";
   String floor = 'none';
   String building = 'none';
-  bool floorChoosen = false;
+  List<Machine> currentDisplay = Sittner;
+  String title = _sittner;
+  String changeTitle = "";
 
   // Needs to pass in washers and dyers
   void updatePage(String selectedFloor, String selectedBuilding) {
@@ -47,70 +49,64 @@ class _DropDownMain extends State<DropDownMain> {
     var floor = 0;
     if (selectedBuilding == _sittner) {
       machines = Sittner;
+      changeTitle = _sittner;
     } else if (selectedBuilding == _forman) {
       floor = int.parse(selectedFloor.substring(1)) - 2; // starts on 2nd
       machines = Foreman[floor];
+      changeTitle = _forman;
     } else if (selectedBuilding == _conard) {
       floor = int.parse(selectedFloor.substring(1)) - 1; // starts on 1st
       machines = Conard[floor];
+      changeTitle = _conard;
     }
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => FloorLayout(machines: machines)),
-    );
+    setState(() {
+      currentDisplay = machines;
+      title = changeTitle;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('WWU Wash and Dry'),
+        centerTitle: true,
+        title: Text(title),
         backgroundColor: const Color(0xFF656950),
       ),
-      body: Container(
-          color: const Color.fromARGB(255, 177, 177, 177),
-          padding: const EdgeInsets.all(50),
-          child: Material(
-            elevation: 12,
-            child: Column(
+      body: Column(
+        children: <Widget>[
+          Center(
+            child: Row(
               children: <Widget>[
                 Container(
-                  margin: const EdgeInsets.all(50),
-                  child: const Text(
-                    "Select a floor from the drop down menu",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 30),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(20),
-                  child: TextButton(
-                    onPressed: () => {
-                      building = _sittner,
-                      setState(() {
-                        updatePage("S1", _sittner);
-                      })
-                    },
-                    child: const Text(
-                      _sittner,
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.black,
+                  child: Align(
+                    alignment: FractionalOffset.topCenter,
+                    child: TextButton(
+                      child: const Text(
+                        _sittner,
+                        style: TextStyle(fontSize: 24, color: Colors.black),
                       ),
+                      onPressed: () {
+                        building = _sittner;
+                        setState(() {
+                          updatePage("S1", _sittner);
+                        });
+                      },
                     ),
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.all(20),
                   child: DropDownList(_forman, _foremanFloors, updatePage),
                 ),
                 Container(
-                  margin: const EdgeInsets.all(20),
                   child: DropDownList(_conard, _condardFloors, updatePage),
                 ),
               ],
             ),
-          )),
+          ),
+          Expanded(child: FloorLayout(machines: currentDisplay)),
+        ],
+      ),
     );
   }
 }
