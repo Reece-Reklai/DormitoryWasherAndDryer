@@ -6,14 +6,18 @@
 ## Test
 * `login_test.dart ` 
     - testWidgets
-        - Login returns a Login_Page on recieving -1 or AuthFailed
-        - Login returns a Login_Page on recieving AuthFailed
-        - Login returns a Login_Page on recieving any other value
+        - Login returns a Login_Page on receiving -1 or AuthFailed
+        - Login returns a Login_Page on receiving AuthFailed
+        - Login returns a Login_Page on receiving any other value
         - Error Page button press takes you to Login
         - Login Page Button takes you to Home
+* `test_building.dart`
+    - 
+
 ## Home Page
 * `lib/home.dart` 
     - manages single sign on and presents user with sign on page, an error page, or moves on to the home page.
+
 ## Home page widgets
 * `dorm_data.dart` 
     - temp list of data to be converted to classes
@@ -29,8 +33,10 @@
     - selects page to display based on user authentication 
 * `machine.dart`
     - machine class with information about a specific machine
+
 ## Popups
 * `popup.dart` - Displays popups for washer/dryer selection
+
 ## Floor Layout
 * `floor_layout.dart` - Displays floor layout for machines. Calls self reporting widget
 * `FloorLayout Function`
@@ -39,8 +45,12 @@
     - it extends to the _FloorLayout function
 * `_FloorLayout function`
     - Has a mock that tests what the machine's current status is and returns the associated color (green, yellow, red)
-    - it builds a listview that contains the following:
+    - it builds a list view that contains the following:
         - displays a color behind the text associating with the machines current color
         - displays a text containing the machine name, number
         - displays a self report button as a warning icon
             - once pressed, it shows a dummy alert dialog
+
+## Packages
+
+1. `https://pub.dev/packages/mocktail`
