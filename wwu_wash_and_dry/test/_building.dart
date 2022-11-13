@@ -5,16 +5,21 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:wwu_wash_and_dry/class/building.dart';
 
 void main() {
-  testWidgets('Login returns a Login_page on recievieng a \'-1\'',
-      (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  test('Building Class Test', () {
+    // Arrange
+    final listWasher = List.filled(5, "washer");
+    final washers = List.filled(5, listWasher);
+    final listDryer = List.filled(5, "dryer");
+    final dryers = List.filled(5, listDryer);
 
-    void updateState() {}
-    await tester.pumpWidget(Login('-1', updateState));
-    expect(find.text('Login Using WWU Account'), findsOneWidget);
+    // Act
+    final sittner = Building("Sittner", 1, washers, dryers);
+
+    // Assert
+    expect(sittner.buildingName, "Sittner");
   });
 }
