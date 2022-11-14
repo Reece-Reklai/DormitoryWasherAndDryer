@@ -54,3 +54,9 @@
 ## Packages
 
 1. `https://pub.dev/packages/mocktail`
+2. `https://pub.dev/packages/equatable#recap1`
+3. `https://pub.dev/packages/linter`
+
+## Google Documentation
+
+1. `https://docs.google.com/document/d/1mFKdUnApCGj03VzCBk_2pUWTvLkUo0n02TE1V_2-VBs/edit?usp=sharing`

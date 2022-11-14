@@ -1,8 +1,11 @@
-class Machine {
-  late String _id;
-  late String _type;
-  late String selfReportStatus;
-  late bool isAvailable;
+import 'package:equatable/equatable.dart';
+
+// ignore: must_be_immutable
+class Machine extends Equatable {
+  String _id = "#0";
+  String _type = "";
+  String selfReportStatus = "NONE";
+  bool isAvailable = false;
 
   Machine(String id, String type, String selfReportStatus) {
     _id = id;
@@ -31,4 +34,12 @@ class Machine {
   String getStatus() {
     return "AVAL";
   }
+
+  @override
+  String toString() {
+    return '[$_id, $_type, $selfReportStatus, $isAvailable]';
+  }
+  
+  @override
+  List<Object?> get props => [_id, _type, selfReportStatus, isAvailable];
 }

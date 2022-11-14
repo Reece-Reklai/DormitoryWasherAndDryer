@@ -291,7 +291,8 @@ linter:
 
     # Flutter mobile only: Web packages aren't available in mobile flutter apps
     # https://dart-lang.github.io/linter/lints/avoid_web_libraries_in_flutter.html
-    - avoid_web_libraries_in_flutter
+    # Single-Sign on only requires web, no need for mobile
+    # - avoid_web_libraries_in_flutter
 
     # Use the await keyword only for futures. There is nothing to await in synchronous code
     #
@@ -656,7 +657,8 @@ linter:
     # Add a const constructor when possible
     #
     # https://dart-lang.github.io/linter/lints/prefer_const_constructors_in_immutables.html
-    - prefer_const_constructors_in_immutables
+    # Ignore the proper of having or needing a constructor be constant
+    #- prefer_const_constructors_in_immutables
 
     # final is good, const is better
     # https://dart-lang.github.io/linter/lints/prefer_const_declarations.html
