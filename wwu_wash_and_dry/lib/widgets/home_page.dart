@@ -42,7 +42,7 @@ class _DropDownMain extends State<DropDownMain> {
   static const String _sittner = 'Sittner';
 
   Floor currentDisplay = Floor(0, sittner[0], sittner[1]);
-  String title = '${_sittner} F1';
+  String title = '${_sittner} S1';
 
   // Needs to pass in washers and dyers
   void updatePage(String selectedFloor, String selectedBuilding) {
@@ -50,7 +50,7 @@ class _DropDownMain extends State<DropDownMain> {
     var floor = 0;
     if (selectedBuilding == _sittner) {
       machines = sittner;
-      title = '${_sittner} F1';
+      title = '${_sittner} S1';
     } else if (selectedBuilding == _foreman) {
       floor = int.parse(selectedFloor.substring(1)) - 2; // starts on 2nd
       machines = foreman[floor];
