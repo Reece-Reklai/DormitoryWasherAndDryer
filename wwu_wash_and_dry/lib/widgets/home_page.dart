@@ -37,9 +37,9 @@ class DropDownMain extends StatefulWidget {
 class _DropDownMain extends State<DropDownMain> {
   static const _foremanFloors = ['F2', 'F3', 'F4', 'F5', 'F6', 'F7'];
   static const _condardFloors = ['C1', 'C2', 'C3', 'C4'];
-  static const String _foreman = "Foreman";
-  static const String _conard = "Conard";
-  static const String _sittner = "Sittner";
+  static const String _foreman = 'Foreman';
+  static const String _conard = 'Conard';
+  static const String _sittner = 'Sittner';
 
   Floor currentDisplay = Floor(0, sittner[0], sittner[1]);
   String title = '${_sittner} F1';
@@ -98,7 +98,7 @@ class _DropDownMain extends State<DropDownMain> {
                       ),
                       onPressed: () {
                         setState(() {
-                          updatePage("S1", _sittner);
+                          updatePage('S1', _sittner);
                         });
                       },
                     ),
