@@ -5,7 +5,7 @@ import '../class/temp_dorm_data.dart';
 
 import 'floor_layout.dart';
 
-// Implemented by Catherine Thomsen and Redesigned the UI
+// Implemented by Catherine Thomsen and Reece Redesigned the UI
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,11 +37,8 @@ class _DropDownMain extends State<DropDownMain> {
   static const String _forman = "Foreman";
   static const String _conard = "Conard";
   static const String _sittner = "Sittner";
-  String floor = 'none';
-  String building = 'none';
   List<Machine> currentDisplay = Sittner;
   String title = _sittner;
-  String changeTitle = "";
 
   // Needs to pass in washers and dyers
   void updatePage(String selectedFloor, String selectedBuilding) {
@@ -49,19 +46,18 @@ class _DropDownMain extends State<DropDownMain> {
     var floor = 0;
     if (selectedBuilding == _sittner) {
       machines = Sittner;
-      changeTitle = _sittner;
+      title = _sittner;
     } else if (selectedBuilding == _forman) {
       floor = int.parse(selectedFloor.substring(1)) - 2; // starts on 2nd
       machines = Foreman[floor];
-      changeTitle = _forman;
+      title = _forman;
     } else if (selectedBuilding == _conard) {
       floor = int.parse(selectedFloor.substring(1)) - 1; // starts on 1st
       machines = Conard[floor];
-      changeTitle = _conard;
+      title = _conard;
     }
     setState(() {
       currentDisplay = machines;
-      title = changeTitle;
     });
   }
 
@@ -87,7 +83,6 @@ class _DropDownMain extends State<DropDownMain> {
                         style: TextStyle(fontSize: 24, color: Colors.black),
                       ),
                       onPressed: () {
-                        building = _sittner;
                         setState(() {
                           updatePage("S1", _sittner);
                         });
