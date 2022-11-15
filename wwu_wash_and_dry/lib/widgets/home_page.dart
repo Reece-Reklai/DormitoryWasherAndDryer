@@ -82,26 +82,20 @@ class _DropDownMain extends State<DropDownMain> {
           Center(
             child: Row(
               children: <Widget>[
-                Container(
-                  child: DropDownList(_conard, _condardFloors, updatePage),
-                ),
-                Container(
-                  child: DropDownList(_foreman, _foremanFloors, updatePage),
-                ),
-                Container(
-                  child: Align(
-                    alignment: FractionalOffset.topCenter,
-                    child: TextButton(
-                      child: const Text(
-                        _sittner,
-                        style: TextStyle(fontSize: 24, color: Colors.black),
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          updatePage('S1', _sittner);
-                        });
-                      },
+                DropDownList(_conard, _condardFloors, updatePage),
+                DropDownList(_foreman, _foremanFloors, updatePage),
+                Align(
+                  alignment: FractionalOffset.topCenter,
+                  child: TextButton(
+                    child: const Text(
+                      _sittner,
+                      style: TextStyle(fontSize: 24, color: Colors.black),
                     ),
+                    onPressed: () {
+                      setState(() {
+                        updatePage('S1', _sittner);
+                      });
+                    },
                   ),
                 ),
               ],
