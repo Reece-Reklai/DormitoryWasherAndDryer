@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_brace_in_string_interps
+
 import 'package:flutter/material.dart';
 import 'package:wwu_wash_and_dry/class/dorm_data.dart';
 import 'package:wwu_wash_and_dry/class/floor.dart';
@@ -40,7 +42,7 @@ class _DropDownMain extends State<DropDownMain> {
   static const String _sittner = "Sittner";
 
   Floor currentDisplay = Floor(0, sittner[0], sittner[1]);
-  String title = _sittner;
+  String title = '${_sittner} F1';
 
   // Needs to pass in washers and dyers
   void updatePage(String selectedFloor, String selectedBuilding) {
@@ -48,16 +50,16 @@ class _DropDownMain extends State<DropDownMain> {
     var floor = 0;
     if (selectedBuilding == _sittner) {
       machines = sittner;
-      title = _sittner;
+      title = '${_sittner} F1';
     } else if (selectedBuilding == _foreman) {
       floor = int.parse(selectedFloor.substring(1)) - 2; // starts on 2nd
       machines = foreman[floor];
-      title = _foreman;
+      title = '${_foreman} F${floor + 2}';
     } else if (selectedBuilding == _conard) {
       floor = int.parse(selectedFloor.substring(1)) - 1; // starts on 1st
 
       machines = conard[floor];
-      title = _conard;
+      title = '${_conard} C${floor + 1}';
     }
 
     final Floor floorObj = Floor(floor, machines[0], machines[1]);
@@ -81,6 +83,12 @@ class _DropDownMain extends State<DropDownMain> {
             child: Row(
               children: <Widget>[
                 Container(
+                  child: DropDownList(_conard, _condardFloors, updatePage),
+                ),
+                Container(
+                  child: DropDownList(_foreman, _foremanFloors, updatePage),
+                ),
+                Container(
                   child: Align(
                     alignment: FractionalOffset.topCenter,
                     child: TextButton(
@@ -95,12 +103,6 @@ class _DropDownMain extends State<DropDownMain> {
                       },
                     ),
                   ),
-                ),
-                Container(
-                  child: DropDownList(_foreman, _foremanFloors, updatePage),
-                ),
-                Container(
-                  child: DropDownList(_conard, _condardFloors, updatePage),
                 ),
               ],
             ),
