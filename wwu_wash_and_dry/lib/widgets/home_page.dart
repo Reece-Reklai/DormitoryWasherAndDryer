@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../class/machine.dart';
 import './drop_down_list.dart';
 
-// from Adam: I don't know how to make this work. wasn't part of this
-//import '../class/temp_dorm_data.dart';
+import '../class/dorm_data.dart';
+import "../class/floor.dart";
 
 import 'floor_layout.dart';
 
@@ -22,7 +22,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        home: DropDownMain(), debugShowCheckedModeBanner: false);
+      home: DropDownMain(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
 
@@ -40,33 +42,31 @@ class _DropDownMain extends State<DropDownMain> {
   static const String _conard = "Conard";
   static const String _sittner = "Sittner";
 
-  // from Adam: I don't know how to make this work. wasn't part of this
-  //List<Machine> currentDisplay = Sittner;
+  Floor currentDisplay = Floor(0, Sittner[0], Sittner[1]);
   String title = _sittner;
 
   // Needs to pass in washers and dyers
   void updatePage(String selectedFloor, String selectedBuilding) {
-    List<Machine> machines = [];
+    List<List<String>> machines = [];
     var floor = 0;
     if (selectedBuilding == _sittner) {
-      // from Adam: I don't know how to make this work. wasn't part of this
-      //machines = Sittner;
+      machines = Sittner;
       title = _sittner;
     } else if (selectedBuilding == _foreman) {
       floor = int.parse(selectedFloor.substring(1)) - 2; // starts on 2nd
-      // from Adam: I don't know how to make this work. wasn't part of this
-      //machines = Foreman[floor];
+      machines = Foreman[floor];
       title = _foreman;
     } else if (selectedBuilding == _conard) {
       floor = int.parse(selectedFloor.substring(1)) - 1; // starts on 1st
 
-      // from Adam: I don't know how to make this work. wasn't part of this
-      //machines = Conard[floor];
+      machines = Conard[floor];
       title = _conard;
     }
+
+    Floor floorObj = Floor(floor, machines[0], machines[1]);
+
     setState(() {
-      // from Adam: I don't know how to make this work. wasn't part of this
-      //currentDisplay = machines;
+      currentDisplay = floorObj;
     });
   }
 
@@ -108,8 +108,7 @@ class _DropDownMain extends State<DropDownMain> {
               ],
             ),
           ),
-          // from Adam: I don't know how to make this work. wasn't part of this
-          //Expanded(child: FloorLayout(machines: currentDisplay)),
+          Expanded(child: FloorLayout(floorObj: currentDisplay)),
         ],
       ),
     );
