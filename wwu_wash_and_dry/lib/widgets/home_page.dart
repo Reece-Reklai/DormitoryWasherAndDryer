@@ -63,7 +63,7 @@ class _DropDownMain extends State<DropDownMain> {
       title = _conard;
     }
 
-    Floor floorObj = Floor(floor, machines[0], machines[1]);
+    final Floor floorObj = Floor(floor, machines[0], machines[1]);
 
     setState(() {
       currentDisplay = floorObj;
