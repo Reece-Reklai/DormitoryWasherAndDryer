@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import '../class/machine.dart';
-import './drop_down_list.dart';
-
-import '../class/dorm_data.dart';
-import "../class/floor.dart";
-
-import 'floor_layout.dart';
+import 'package:wwu_wash_and_dry/class/dorm_data.dart';
+import 'package:wwu_wash_and_dry/class/floor.dart';
+import 'package:wwu_wash_and_dry/widgets/drop_down_list.dart';
+import 'package:wwu_wash_and_dry/widgets/floor_layout.dart';
 
 // Implemented by Catherine Thomsen and Reece Redesigned the UI
 
@@ -42,7 +39,7 @@ class _DropDownMain extends State<DropDownMain> {
   static const String _conard = "Conard";
   static const String _sittner = "Sittner";
 
-  Floor currentDisplay = Floor(0, Sittner[0], Sittner[1]);
+  Floor currentDisplay = Floor(0, sittner[0], sittner[1]);
   String title = _sittner;
 
   // Needs to pass in washers and dyers
@@ -50,20 +47,20 @@ class _DropDownMain extends State<DropDownMain> {
     List<List<String>> machines = [];
     var floor = 0;
     if (selectedBuilding == _sittner) {
-      machines = Sittner;
+      machines = sittner;
       title = _sittner;
     } else if (selectedBuilding == _foreman) {
       floor = int.parse(selectedFloor.substring(1)) - 2; // starts on 2nd
-      machines = Foreman[floor];
+      machines = foreman[floor];
       title = _foreman;
     } else if (selectedBuilding == _conard) {
       floor = int.parse(selectedFloor.substring(1)) - 1; // starts on 1st
 
-      machines = Conard[floor];
+      machines = conard[floor];
       title = _conard;
     }
 
-    Floor floorObj = Floor(floor, machines[0], machines[1]);
+    final Floor floorObj = Floor(floor, machines[0], machines[1]);
 
     setState(() {
       currentDisplay = floorObj;

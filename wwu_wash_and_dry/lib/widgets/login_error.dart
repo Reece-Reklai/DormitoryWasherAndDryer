@@ -31,7 +31,7 @@ class LoginError extends StatelessWidget {
               child: const Text('Return to login page'),
             )
           ],
-        )),
+        ),),
       ),
     );
   }

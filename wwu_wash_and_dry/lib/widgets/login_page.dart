@@ -30,7 +30,7 @@ class LoginPage extends StatelessWidget {
                 'Login Using WWU Account',
               ),
             ),
-          ]),
+          ],),
         ),
       ),
     );

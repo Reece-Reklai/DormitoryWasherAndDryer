@@ -1,12 +1,10 @@
-import 'machine.dart';
-
 // List<List<String>>>
-var Sittner = [
+List<List<String>> sittner = [
   ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
   ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 ];
 // List<List<list<String>>>>
-var Foreman = [
+List<List<List<String>>> foreman = [
   [
     ['11'],
     ['11']
@@ -32,7 +30,7 @@ var Foreman = [
     ['20', '21']
   ],
 ];
-var Conard = [
+List<List<List<String>>> conard = [
   [
     ['22', '23', '24'],
     ['22', '23', '24']

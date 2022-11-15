@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import '../class/machine.dart';
-import "../class/floor.dart";
+import 'package:wwu_wash_and_dry/class/floor.dart';
+import 'package:wwu_wash_and_dry/class/machine.dart';
 // Created by Reece Reklai and Bradon Ladd
 
 // When the respective floor is clicked on the homepage, the class
 // governing the homepage will dynamically generate a FloorLayout class
 // and pass in the list of washers, dryers, their availability, and a reference
 // to the self-report information(? maybe)
+// ignore: must_be_immutable
 class FloorLayout extends StatefulWidget {
   FloorLayout({super.key, required this.floorObj, this.building = ''});
 
@@ -58,11 +59,11 @@ class _FloorLayout extends State<FloorLayout> {
                         margin: const EdgeInsets.all(4),
                         child: Material(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0)),
+                              borderRadius: BorderRadius.circular(20.0),),
                           elevation: 6,
                           child: ListTile(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
+                                borderRadius: BorderRadius.circular(20.0),),
                             title: Text(
                               '${widget.floorObj.getWasherList[i].getType} ${widget.floorObj.getWasherList[i].getID}',
                               style: const TextStyle(
@@ -109,11 +110,11 @@ class _FloorLayout extends State<FloorLayout> {
                         margin: const EdgeInsets.all(4),
                         child: Material(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0)),
+                              borderRadius: BorderRadius.circular(20.0),),
                           elevation: 6,
                           child: ListTile(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
+                                borderRadius: BorderRadius.circular(20.0),),
                             title: Text(
                               '${widget.floorObj.getDryerList[i].getType} ${widget.floorObj.getDryerList[i].getID}',
                               style: const TextStyle(
