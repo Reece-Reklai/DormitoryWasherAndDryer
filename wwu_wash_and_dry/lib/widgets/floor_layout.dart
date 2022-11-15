@@ -59,11 +59,13 @@ class _FloorLayout extends State<FloorLayout> {
                         margin: const EdgeInsets.all(4),
                         child: Material(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
                           elevation: 6,
                           child: ListTile(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
                             title: Text(
                               '${widget.floorObj.getWasherList[i].getType} ${widget.floorObj.getWasherList[i].getID}',
                               style: const TextStyle(
@@ -110,11 +112,13 @@ class _FloorLayout extends State<FloorLayout> {
                         margin: const EdgeInsets.all(4),
                         child: Material(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
                           elevation: 6,
                           child: ListTile(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
                             title: Text(
                               '${widget.floorObj.getDryerList[i].getType} ${widget.floorObj.getDryerList[i].getID}',
                               style: const TextStyle(

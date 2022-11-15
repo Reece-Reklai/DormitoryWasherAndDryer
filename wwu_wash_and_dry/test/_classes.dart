@@ -19,7 +19,11 @@ void main() {
       const testBuildingName = "";
 
       final testClass = Building(
-          testBuildingName, testNumFloors, testDryerIDs, testWasherIDs,);
+        testBuildingName,
+        testNumFloors,
+        testDryerIDs,
+        testWasherIDs,
+      );
 
       expect(testClass.buildingName, "");
       expect(testClass.floorList, []);

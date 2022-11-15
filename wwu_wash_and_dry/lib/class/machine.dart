@@ -39,7 +39,7 @@ class Machine extends Equatable {
   String toString() {
     return '[$_id, $_type, $selfReportStatus, $isAvailable]';
   }
-  
+
   @override
   List<Object?> get props => [_id, _type, selfReportStatus, isAvailable];
 }

@@ -7,7 +7,10 @@ class Building extends Equatable {
   List<Floor> floorList = [];
 
   void createFloor(
-      int currentFloor, List<String> dryerIDs, List<String> washerIDs,) {
+    int currentFloor,
+    List<String> dryerIDs,
+    List<String> washerIDs,
+  ) {
     final floor = Floor(currentFloor, dryerIDs, washerIDs);
     floorList.add(floor);
   }
@@ -30,7 +33,7 @@ class Building extends Equatable {
   String toString() {
     return '[$_buildingName, $floorList]';
   }
-  
+
   @override
   List<Object?> get props => [buildingName, floorList];
 }
