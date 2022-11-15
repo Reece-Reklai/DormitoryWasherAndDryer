@@ -1,63 +1,68 @@
 import 'package:flutter/material.dart';
+import 'dart:html' as html;
 
-void main() => runApp(MyApp());
+import 'widgets/login.dart';
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+void main() {
+  // collect access key with a querry to the current url
+  var accessToken = (Uri.base.queryParameters['token'] ?? '').toString();
+  // collect error with a querry to the current url
+  final error = (Uri.base.queryParameters['error'] ?? '').toString();
+
+  // continue using localhost if you start on localhost
+  // WARNING: this completely dissables single sign on and all
+  // of its features
+  if (Uri.base.toString().contains('localhost')) {
+    accessToken = 'This_token_has_no_features';
   }
+  runApp(WWUApp(accessToken, error));
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+class WWUApp extends StatefulWidget {
+  final String accessToken;
+  final String error;
+  const WWUApp(this.accessToken, this.error, {super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<WWUApp> createState() => _WWUAppState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+class _WWUAppState extends State<WWUApp> {
+  var _accessKey = "-1";
+  var _errorState = false;
+  void _updateState() {
+    if (_accessKey == 'AuthFailed') {
+      // if in error state, on function use, change state number
+      // back to the Login page's state string
+      setState(() {
+        _accessKey = '-1';
+      });
+    } else {
+      // if the login button is clicked try to launch single sign on
+      setState(() {
+        // change webpage to the single sign on site and if it fails change key to AuthFailed to trigger error page.
+        html.window.open(
+            'https://login.microsoftonline.com/d958f048-e431-4277-9c8d-ebfb75e7aa64/oauth2/v2.0/authorize?client_id=b011ad62-bda8-449f-99d3-519a3d973218&response_type=code&response_mode=query&scope=https://graph.microsoft.com/User.Read&redirect_uri=https://172.27.4.142:5000/login/callback',
+            '_self');
+        _accessKey = 'AuthFailed';
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
+    // returns the correct widget, error, login, or home page
+    // widgets depending on the accessKey
+    // but sets access key depending on the queries for this websites
+    // access key and error
+    if (!_errorState) {
+      if (widget.error != '') {
+        _accessKey = 'AuthFailed';
+        _errorState = true;
+      } else if (widget.accessToken != '') {
+        _accessKey = widget.accessToken;
+      }
+    }
+    return Login(_accessKey, _updateState);
   }
 }
