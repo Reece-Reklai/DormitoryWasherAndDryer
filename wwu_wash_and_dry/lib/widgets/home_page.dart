@@ -34,7 +34,7 @@ class DropDownMain extends StatefulWidget {
 class _DropDownMain extends State<DropDownMain> {
   static const _foremanFloors = ['F2', 'F3', 'F4', 'F5', 'F6', 'F7'];
   static const _condardFloors = ['C1', 'C2', 'C3', 'C4'];
-  static const String _forman = "Foreman";
+  static const String _foreman = "Foreman";
   static const String _conard = "Conard";
   static const String _sittner = "Sittner";
   List<Machine> currentDisplay = Sittner;
@@ -47,10 +47,10 @@ class _DropDownMain extends State<DropDownMain> {
     if (selectedBuilding == _sittner) {
       machines = Sittner;
       title = _sittner;
-    } else if (selectedBuilding == _forman) {
+    } else if (selectedBuilding == _foreman) {
       floor = int.parse(selectedFloor.substring(1)) - 2; // starts on 2nd
       machines = Foreman[floor];
-      title = _forman;
+      title = _foreman;
     } else if (selectedBuilding == _conard) {
       floor = int.parse(selectedFloor.substring(1)) - 1; // starts on 1st
       machines = Conard[floor];
@@ -91,7 +91,7 @@ class _DropDownMain extends State<DropDownMain> {
                   ),
                 ),
                 Container(
-                  child: DropDownList(_forman, _foremanFloors, updatePage),
+                  child: DropDownList(_foreman, _foremanFloors, updatePage),
                 ),
                 Container(
                   child: DropDownList(_conard, _condardFloors, updatePage),
