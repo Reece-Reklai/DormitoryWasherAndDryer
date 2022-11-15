@@ -53,7 +53,7 @@ class Floor extends Equatable {
   String toString() {
     return '[$_floorLevel, $_dryerList, $_washerList]';
   }
-  
+
   @override
   List<Object?> get props => [_floorLevel, _dryerList, _washerList];
 }

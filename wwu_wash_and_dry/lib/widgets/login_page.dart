@@ -13,24 +13,27 @@ class LoginPage extends StatelessWidget {
           backgroundColor: Colors.lightGreen.shade900,
         ),
         body: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const Text(
-              'WWU Wash and Dry Login',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 25),
-            TextButton(
-              onPressed: _updateState,
-              style: TextButton.styleFrom(
-                fixedSize: const Size.fromHeight(75.0),
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.lightGreen.shade900,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'WWU Wash and Dry Login',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
-              child: const Text(
-                'Login Using WWU Account',
+              const SizedBox(height: 25),
+              TextButton(
+                onPressed: _updateState,
+                style: TextButton.styleFrom(
+                  fixedSize: const Size.fromHeight(75.0),
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.lightGreen.shade900,
+                ),
+                child: const Text(
+                  'Login Using WWU Account',
+                ),
               ),
-            ),
-          ]),
+            ],
+          ),
         ),
       ),
     );
