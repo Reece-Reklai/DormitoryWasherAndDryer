@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:wwu_wash_and_dry/widgets/login.dart';
 
 void main() {
-  // collect access key with a querry to the current url
+  // collect access key with a query to the current url
   var accessToken = (Uri.base.queryParameters['token'] ?? '').toString();
-  // collect error with a querry to the current url
+  // collect error with a query to the current url
   final error = (Uri.base.queryParameters['error'] ?? '').toString();
 
   // continue using localhost if you start on localhost
-  // WARNING: this completely dissables single sign on and all
+  // WARNING: this completely disables single sign on and all
   // of its features
   if (Uri.base.toString().contains('localhost')) {
     accessToken = 'This_token_has_no_features';
