@@ -6,9 +6,9 @@ import 'package:wwu_wash_and_dry/widgets/login.dart';
 
 void main() {
   // collect access key with a query to the current url
-  var accessToken = (Uri.base.queryParameters['token'] ?? '').toString();
+  var accessToken = (Uri.base.queryParameters['token']).toString();
   // collect error with a query to the current url
-  final error = (Uri.base.queryParameters['error'] ?? '').toString();
+  final error = (Uri.base.queryParameters['error']).toString();
 
   // continue using localhost if you start on localhost
   // WARNING: this completely disables single sign on and all
