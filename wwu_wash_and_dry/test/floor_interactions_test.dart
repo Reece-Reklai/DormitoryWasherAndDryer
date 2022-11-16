@@ -7,23 +7,61 @@ import 'package:wwu_wash_and_dry/widgets/floor_layout.dart';
 // all tests in this file must be run from a web platform
 // use flutter test --platform chrome to execute properly
 
-void main() {
-  testWidgets('Test drop down list', (WidgetTester tester) async {
-    String titleReturned = "";
-    String itemReturned = "";
+class MyWidget extends StatelessWidget {
+  const MyWidget({
+    super.key,
+    required this.title,
+    required this.message,
+  });
 
-    void _updatePage(String title, String item) {
-      titleReturned = title;
-      itemReturned = item;
-    }
+  final String title;
+  final String message;
 
-    await tester.pumpWidget(
-      DropDownList("Displayed Value", const ["item1", "item2"], _updatePage),
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: Center(
+          child: Text(message),
+        ),
+      ),
     );
-    await tester.tap(find.byType(DropdownButton));
-    await tester.pump();
-    await tester.tap(find.text("item1"));
-    expect(titleReturned, "Displayed Value");
-    expect(itemReturned, "item1");
+  }
+}
+
+void main() {
+  testWidgets('MyWidget has a title and message', (tester) async {
+    // Create the widget by telling the tester to build it.
+    await tester.pumpWidget(const MyWidget(title: 'T', message: 'M'));
+    final titleFinder = find.text('T');
+    final messageFinder = find.text('M');
+    expect(titleFinder, findsOneWidget);
+    expect(messageFinder, findsOneWidget);
   });
 }
+// void main() {
+//   testWidgets('Test drop down list', (WidgetTester tester) async {
+//     String titleReturned = "";
+//     String itemReturned = "";
+
+//     void _updatePage(String title, String item) {
+//       titleReturned = title;
+//       itemReturned = item;
+//     }
+
+//     await tester.pumpWidget(
+//       DropDownList("Displayed Value", const ["item1", "item2"], _updatePage),
+//     );
+//     await tester.tap(find.byType(DropdownButton));
+//     await tester.pump();
+//     await tester.tap(find.text("item1"));
+//     expect(titleReturned, "Displayed Value");
+//     expect(itemReturned, "item1");
+
+    
+//   });
+// }
