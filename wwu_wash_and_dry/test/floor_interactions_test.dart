@@ -3,53 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:wwu_wash_and_dry/widgets/drop_down_list.dart';
 import 'package:wwu_wash_and_dry/widgets/home_page.dart';
 import 'package:wwu_wash_and_dry/widgets/floor_layout.dart';
-
+import 'mock_data.dart';
 // all tests in this file must be run from a web platform
 // use flutter test --platform chrome to execute properly
-class DDT {
-  String selected = "";
-  String found = "";
-
-  void testFunction(String foundM, String selection) {
-    selected = selection;
-    found = foundM;
-  }
-}
-
-class TestDropDownList extends StatelessWidget {
-  TestDropDownList({
-    super.key,
-    required this.title,
-    required this.message,
-  });
-
-  final String title;
-  final String message;
-  final localFunction = DDT();
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: Center(
-          child: DropDownList(
-            message,
-            const [
-              "1",
-              "2",
-              "3",
-            ],
-            localFunction.testFunction,
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 void main() {
   testWidgets('MyWidget has a title and message', (tester) async {
