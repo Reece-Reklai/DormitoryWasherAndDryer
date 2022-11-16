@@ -40,6 +40,7 @@ dependencies:
   dio: ^4.0.6 # Making HTTP requests
   equatable: ^2.0.3
   linter: ^1.28.0
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
