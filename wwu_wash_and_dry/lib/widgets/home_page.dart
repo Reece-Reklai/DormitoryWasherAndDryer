@@ -9,7 +9,8 @@ import 'package:wwu_wash_and_dry/widgets/floor_layout.dart';
 // Implemented by Catherine Thomsen and Reece Redesigned the UI
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String singleSignOnKey;
+  const HomePage(this.singleSignOnKey, {super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
