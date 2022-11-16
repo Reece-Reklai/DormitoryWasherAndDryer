@@ -6,9 +6,18 @@ import 'package:wwu_wash_and_dry/widgets/floor_layout.dart';
 
 // all tests in this file must be run from a web platform
 // use flutter test --platform chrome to execute properly
+class DDT {
+  String selected = "";
+  String found = "";
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({
+  void testFunction(String foundM, String selection) {
+    selected = selection;
+    found = foundM;
+  }
+}
+
+class TestDropDownList extends StatelessWidget {
+  TestDropDownList({
     super.key,
     required this.title,
     required this.message,
@@ -16,6 +25,7 @@ class MyWidget extends StatelessWidget {
 
   final String title;
   final String message;
+  final localFunction = DDT();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +36,15 @@ class MyWidget extends StatelessWidget {
           title: Text(title),
         ),
         body: Center(
-          child: Text(message),
+          child: DropDownList(
+            message,
+            const [
+              "1",
+              "2",
+              "3",
+            ],
+            localFunction.testFunction,
+          ),
         ),
       ),
     );
@@ -36,7 +54,7 @@ class MyWidget extends StatelessWidget {
 void main() {
   testWidgets('MyWidget has a title and message', (tester) async {
     // Create the widget by telling the tester to build it.
-    await tester.pumpWidget(const MyWidget(title: 'T', message: 'M'));
+    await tester.pumpWidget(TestDropDownList(title: 'T', message: 'M'));
     final titleFinder = find.text('T');
     final messageFinder = find.text('M');
     expect(titleFinder, findsOneWidget);
