@@ -1,11 +1,12 @@
+// ignore_for_file: unnecessary_brace_in_string_interps
+
 import 'package:flutter/material.dart';
-import '../class/machine.dart';
-import './drop_down_list.dart';
-import '../class/temp_dorm_data.dart';
+import 'package:wwu_wash_and_dry/class/dorm_data.dart';
+import 'package:wwu_wash_and_dry/class/floor.dart';
+import 'package:wwu_wash_and_dry/widgets/drop_down_list.dart';
+import 'package:wwu_wash_and_dry/widgets/floor_layout.dart';
 
-import 'floor_layout.dart';
-
-// Implemented by Catherine Thomsen and Redesigned the UI
+// Implemented by Catherine Thomsen and Reece Redesigned the UI
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,7 +21,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        home: DropDownMain(), debugShowCheckedModeBanner: false);
+      home: DropDownMain(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
 
@@ -34,34 +37,35 @@ class DropDownMain extends StatefulWidget {
 class _DropDownMain extends State<DropDownMain> {
   static const _foremanFloors = ['F2', 'F3', 'F4', 'F5', 'F6', 'F7'];
   static const _condardFloors = ['C1', 'C2', 'C3', 'C4'];
-  static const String _forman = "Foreman";
-  static const String _conard = "Conard";
-  static const String _sittner = "Sittner";
-  String floor = 'none';
-  String building = 'none';
-  List<Machine> currentDisplay = Sittner;
-  String title = _sittner;
-  String changeTitle = "";
+  static const String _foreman = 'Foreman';
+  static const String _conard = 'Conard';
+  static const String _sittner = 'Sittner';
+
+  Floor currentDisplay = Floor(0, sittner[0], sittner[1]);
+  String title = '${_sittner} S1';
 
   // Needs to pass in washers and dyers
   void updatePage(String selectedFloor, String selectedBuilding) {
-    List<Machine> machines = [];
+    List<List<String>> machines = [];
     var floor = 0;
     if (selectedBuilding == _sittner) {
-      machines = Sittner;
-      changeTitle = _sittner;
-    } else if (selectedBuilding == _forman) {
+      machines = sittner;
+      title = '${_sittner} S1';
+    } else if (selectedBuilding == _foreman) {
       floor = int.parse(selectedFloor.substring(1)) - 2; // starts on 2nd
-      machines = Foreman[floor];
-      changeTitle = _forman;
+      machines = foreman[floor];
+      title = '${_foreman} F${floor + 2}';
     } else if (selectedBuilding == _conard) {
       floor = int.parse(selectedFloor.substring(1)) - 1; // starts on 1st
-      machines = Conard[floor];
-      changeTitle = _conard;
+
+      machines = conard[floor];
+      title = '${_conard} C${floor + 1}';
     }
+
+    final Floor floorObj = Floor(floor, machines[0], machines[1]);
+
     setState(() {
-      currentDisplay = machines;
-      title = changeTitle;
+      currentDisplay = floorObj;
     });
   }
 
@@ -78,33 +82,26 @@ class _DropDownMain extends State<DropDownMain> {
           Center(
             child: Row(
               children: <Widget>[
-                Container(
-                  child: Align(
-                    alignment: FractionalOffset.topCenter,
-                    child: TextButton(
-                      child: const Text(
-                        _sittner,
-                        style: TextStyle(fontSize: 24, color: Colors.black),
-                      ),
-                      onPressed: () {
-                        building = _sittner;
-                        setState(() {
-                          updatePage("S1", _sittner);
-                        });
-                      },
+                DropDownList(_conard, _condardFloors, updatePage),
+                DropDownList(_foreman, _foremanFloors, updatePage),
+                Align(
+                  alignment: FractionalOffset.topCenter,
+                  child: TextButton(
+                    child: const Text(
+                      _sittner,
+                      style: TextStyle(fontSize: 24, color: Colors.black),
                     ),
+                    onPressed: () {
+                      setState(() {
+                        updatePage('S1', _sittner);
+                      });
+                    },
                   ),
-                ),
-                Container(
-                  child: DropDownList(_forman, _foremanFloors, updatePage),
-                ),
-                Container(
-                  child: DropDownList(_conard, _condardFloors, updatePage),
                 ),
               ],
             ),
           ),
-          Expanded(child: FloorLayout(machines: currentDisplay)),
+          Expanded(child: FloorLayout(floorObj: currentDisplay)),
         ],
       ),
     );

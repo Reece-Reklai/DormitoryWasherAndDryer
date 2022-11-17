@@ -1,16 +1,17 @@
-import 'package:wwu_wash_and_dry/class/floor.dart';
+import 'package:equatable/equatable.dart';
 
-class Machine {
-  late String _id;
-  late String _type;
-  late String _selfReportStatus;
-  late bool _isAvailable;
+// ignore: must_be_immutable
+class Machine extends Equatable {
+  String _id = "#0";
+  String _type = "";
+  String selfReportStatus = "NONE";
+  bool isAvailable = false;
 
-  Machine(String id, String type, String selfReportStatus, bool isAvailable) {
-    this._id = id;
-    this._type = type;
-    this._selfReportStatus = selfReportStatus;
-    this._isAvailable = isAvailable;
+  Machine(String id, String type, String selfReportStatus) {
+    _id = id;
+    _type = type;
+    selfReportStatus = selfReportStatus;
+    isAvailable = true;
   }
 
   String get getID {
@@ -22,24 +23,23 @@ class Machine {
   }
 
   String get getSelfReportStatus {
-    return _selfReportStatus;
+    return selfReportStatus;
   }
 
   bool get getIsAvailable {
-    return _isAvailable;
-  }
-
-
-  set setSelfReportStatus(String selfReportStatus) {
-    _selfReportStatus = selfReportStatus;
-  }
-
-  set setIsAvailable(bool isAvailable) {
-    _isAvailable = isAvailable;
+    return isAvailable;
   }
 
   // MOCK
   String getStatus() {
     return "AVAL";
   }
+
+  @override
+  String toString() {
+    return '[$_id, $_type, $selfReportStatus, $isAvailable]';
+  }
+
+  @override
+  List<Object?> get props => [_id, _type, selfReportStatus, isAvailable];
 }
