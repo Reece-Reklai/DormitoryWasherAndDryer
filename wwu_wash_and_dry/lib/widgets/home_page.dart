@@ -7,7 +7,6 @@ import 'package:wwu_wash_and_dry/widgets/drop_down_list.dart';
 import 'package:wwu_wash_and_dry/widgets/floor_layout.dart';
 
 // Implemented by Catherine Thomsen and Reece Redesigned the UI
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -41,7 +40,7 @@ class _DropDownMain extends State<DropDownMain> {
   static const String _conard = 'Conard';
   static const String _sittner = 'Sittner';
 
-  Floor currentDisplay = Floor(0, sittner[0], sittner[1]);
+  Floor currentFloor = Floor(0, sittner[0], sittner[1]);
   String title = '${_sittner} S1';
 
   // Needs to pass in washers and dyers
@@ -65,7 +64,7 @@ class _DropDownMain extends State<DropDownMain> {
     final Floor floorObj = Floor(floor, machines[0], machines[1]);
 
     setState(() {
-      currentDisplay = floorObj;
+      currentFloor = floorObj;
     });
   }
 
@@ -101,7 +100,7 @@ class _DropDownMain extends State<DropDownMain> {
               ],
             ),
           ),
-          Expanded(child: FloorLayout(floorObj: currentDisplay)),
+          Expanded(child: FloorLayout(floorObj: currentFloor)),
         ],
       ),
     );

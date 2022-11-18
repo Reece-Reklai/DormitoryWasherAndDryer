@@ -22,6 +22,7 @@ class FloorLayout extends StatefulWidget {
 
 // Widget that dynamically displays the machine list
 class _FloorLayout extends State<FloorLayout> {
+  // determines color for washing machines
   Color getColor(Machine machine) {
     if (machine.getStatus() == 'AVAL') {
       return const Color.fromARGB(255, 0, 169, 69);
