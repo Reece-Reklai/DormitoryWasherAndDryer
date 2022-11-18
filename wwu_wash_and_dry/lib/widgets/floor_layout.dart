@@ -77,20 +77,15 @@ class _FloorLayout extends State<FloorLayout> {
                             tileColor:
                                 getColor(widget.floorObj.getWasherList[i]),
 
-                            // This will open Team 2's self report widget when it is completed
-                            trailing: ElevatedButton(
-                              style: const ButtonStyle(
-                                backgroundColor: MyColor(),
-                              ),
-                              onPressed: () => showDialog(
+                            onLongPress: () => {
+                              showDialog(
                                 context: context,
                                 builder: (BuildContext context) =>
                                     const AlertDialog(
                                   title: Text('Dummy Alert Dialog'),
                                 ),
                               ),
-                              child: const Icon(Icons.report),
-                            ),
+                            },
                           ),
                         ),
                       );
@@ -129,19 +124,15 @@ class _FloorLayout extends State<FloorLayout> {
                                 getColor(widget.floorObj.getDryerList[i]),
 
                             // This will open Team 2's self report widget when it is completed
-                            trailing: ElevatedButton(
-                              style: const ButtonStyle(
-                                backgroundColor: MyColor(),
-                              ),
-                              onPressed: () => showDialog(
+                            onLongPress: () => {
+                              showDialog(
                                 context: context,
                                 builder: (BuildContext context) =>
                                     const AlertDialog(
                                   title: Text('Dummy Alert Dialog'),
                                 ),
                               ),
-                              child: const Icon(Icons.report),
-                            ),
+                            },
                           ),
                         ),
                       );
