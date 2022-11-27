@@ -18,7 +18,7 @@ class Login extends StatelessWidget {
       return LoginError(_updateState);
     } else {
       // any keys that aren't failure or the login -1 page are valid
-      return const HomePage();
+      return HomePage(_accessKey);
     }
   }
 }
