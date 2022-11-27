@@ -7,7 +7,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:wwu_wash_and_dry/class/dorm_data.dart';
+import 'package:wwu_wash_and_dry/class/floor.dart';
 import 'package:wwu_wash_and_dry/main.dart';
+import 'package:wwu_wash_and_dry/widgets/floor_layout.dart';
 import 'package:wwu_wash_and_dry/widgets/login.dart';
 
 // all tests in this file must be run from a web platform
@@ -66,6 +69,56 @@ void main() {
       await tester.tap(find.byType(ElevatedButton));
       await tester.pump();
       expect(find.text('WWU Wash and Dry Login'), findsOneWidget);
+    });
+  });
+
+  group('Floor Layout Tests', () {
+    testWidgets('Testing with an empty list from floor class',
+        (WidgetTester tester) async {
+      // Build our app and trigger a frame.
+      final List<List<String>> test = [
+        [''],
+        ['']
+      ];
+      await tester
+          .pumpWidget(FloorLayout(floorObj: Floor(0, test[0], test[1])));
+      expect(
+          find.descendant(
+            of: find.byType(ListTile),
+            matching: find.text('Washer 1'),
+          ),
+          findsNothing,);
+    });
+
+    testWidgets('Testing with a list filled with input from floor class',
+        (WidgetTester tester) async {
+      // Build our app and trigger a frame.
+      await tester
+          .pumpWidget(FloorLayout(floorObj: Floor(0, sittner[0], sittner[1])));
+      expect(
+          find.descendant(
+            of: find.byType(ListTile),
+            matching: find.text('Washer 1'),
+          ),
+          findsOneWidget,);
+      expect(
+          find.descendant(
+            of: find.byType(ListTile),
+            matching: find.text('Dryer 1'),
+          ),
+          findsOneWidget,);
+      expect(
+          find.descendant(
+            of: find.byType(ListTile),
+            matching: find.text('Washer 2'),
+          ),
+          findsOneWidget,);
+      expect(
+          find.descendant(
+            of: find.byType(ListTile),
+            matching: find.text('Dryer 2'),
+          ),
+          findsOneWidget,);
     });
   });
 }
