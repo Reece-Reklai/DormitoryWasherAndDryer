@@ -7,8 +7,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:js/js_util.dart';
 import 'package:wwu_wash_and_dry/main.dart';
+import 'package:wwu_wash_and_dry/widgets/drop_down_list.dart';
 import 'package:wwu_wash_and_dry/widgets/login.dart';
+import 'package:wwu_wash_and_dry/widgets/home_page.dart';
 
 // all tests in this file must be run from a web platform
 // use flutter test --platform chrome to execute properly
@@ -50,13 +53,11 @@ void main() {
       await tester.pumpWidget(const WWUApp('', ''));
       expect(find.text('Login Using WWU Account'), findsOneWidget);
     });
-
     testWidgets('Error WWU starts on Error Page', (WidgetTester tester) async {
       // Build our app and trigger a frame.
       await tester.pumpWidget(const WWUApp('dasdfs', '1'));
       expect(find.text('Return to login page'), findsOneWidget);
     });
-
     testWidgets('Error Page click sends you to login',
         (WidgetTester tester) async {
       // Build our app and trigger a frame.
@@ -66,6 +67,15 @@ void main() {
       await tester.tap(find.byType(ElevatedButton));
       await tester.pump();
       expect(find.text('WWU Wash and Dry Login'), findsOneWidget);
+    });
+  });
+  group('Drop Down Tests', () {
+    testWidgets('Tests that there are two floor drop downs',
+        (WidgetTester tester) async {
+      // Build our app and trigger a frame.
+      await tester.pumpWidget(const HomePage('SSKEY'));
+      // final firstDD = find.byType(DropDownList);
+      expect(find.byType(DropDownList), findsNWidgets(2));
     });
   });
 }
