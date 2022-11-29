@@ -16,6 +16,7 @@ import 'package:wwu_wash_and_dry/widgets/home_page.dart';
 // all tests in this file must be run from a web platform
 // use flutter test --platform chrome to execute properly
 // for this file: flutter test test\widgets_test.dart --platform chrome
+// Other useful additions: -r expanded
 void main() {
   group('Login Tests', () {
     testWidgets("Login returns a Login_page on receiving a '-1'",
@@ -70,12 +71,21 @@ void main() {
     });
   });
   group('Drop Down Tests', () {
-    testWidgets('Tests that there are two floor drop downs',
-        (WidgetTester tester) async {
+    testWidgets('there are two floor drop downs', (WidgetTester tester) async {
       // Build our app and trigger a frame.
-      await tester.pumpWidget(const HomePage('SSKEY'));
+      await tester.pumpWidget(const HomePage('This_token_has_no_features'));
       // final firstDD = find.byType(DropDownList);
       expect(find.byType(DropDownList), findsNWidgets(2));
+    });
+    final dropDowns = find.byType(DropdownMenuItem<String>);
+    testWidgets('drop downs have expected size', (WidgetTester tester) async {
+      await tester.pumpWidget(const HomePage('This_token_has_no_features'));
+      expect(dropDowns, findsNWidgets(10));
+    });
+    testWidgets('drop downs have expected format', (WidgetTester tester) async {
+      await tester.pumpWidget(const HomePage('This_token_has_no_features'));
+      // final textValues = dropDowns.allCandidates.map((element) { return element.})
+      expect(dropDowns, findsNWidgets(10));
     });
   });
 }
