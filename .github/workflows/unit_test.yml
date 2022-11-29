@@ -34,6 +34,9 @@ jobs:
       - name: Get Flutter Version
         working-directory: ./wwu_wash_and_dry
         run: flutter --version
+      - name: Force upgrading Dart SDK
+        working-directory: ./wwu_wash_and_dry
+        run: flutter upgrade --force
       - name: Get Pub
         working-directory: ./wwu_wash_and_dry
         run: flutter pub get
