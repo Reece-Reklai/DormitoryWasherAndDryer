@@ -40,6 +40,9 @@ jobs:
       - name: Get Pub
         working-directory: ./wwu_wash_and_dry
         run: flutter pub get
-      - name: Run Unit Tests
+      - name: Run Widget Unit Tests
         working-directory: ./wwu_wash_and_dry
-        run: flutter test test/*.dart
+        run: flutter test --platform chrome test/_widgets.dart
+      - name: Run Class Unit Tests
+        working-directory: ./wwu_wash_and_dry
+        run: flutter test test/_classes.dart
