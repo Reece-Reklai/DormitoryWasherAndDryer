@@ -42,7 +42,7 @@ jobs:
         run: flutter pub get
       - name: Run Widget Unit Tests
         working-directory: ./wwu_wash_and_dry
-        run: flutter test --platform chrome test/_widgets.dart
+        run: flutter test --platform chrome test/widgets_test.dart
       - name: Run Class Unit Tests
         working-directory: ./wwu_wash_and_dry
-        run: flutter test test/_classes.dart
+        run: flutter test test/classes_test.dart
