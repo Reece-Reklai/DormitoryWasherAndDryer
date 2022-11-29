@@ -15,7 +15,7 @@ import 'package:wwu_wash_and_dry/widgets/home_page.dart';
 
 // all tests in this file must be run from a web platform
 // use flutter test --platform chrome to execute properly
-
+// for this file: flutter test test\widgets_test.dart --platform chrome
 void main() {
   group('Login Tests', () {
     testWidgets("Login returns a Login_page on receiving a '-1'",
