@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:wwu_wash_and_dry/class/dorm_data.dart';
 import 'package:wwu_wash_and_dry/class/floor.dart';
 import 'package:wwu_wash_and_dry/widgets/drop_down_list.dart';
-// import 'package:wwu_wash_and_dry/widgets/floor_layout_old.dart';
 import 'package:wwu_wash_and_dry/widgets/floor_layout.dart';
 
 // Implemented by Catherine Thomsen and Reece Redesigned the UI

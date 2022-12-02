@@ -7,16 +7,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:js/js_util.dart';
+import 'package:wwu_wash_and_dry/class/dorm_data.dart';
+import 'package:wwu_wash_and_dry/class/floor.dart';
 import 'package:wwu_wash_and_dry/main.dart';
-import 'package:wwu_wash_and_dry/widgets/drop_down_list.dart';
+import 'package:wwu_wash_and_dry/widgets/floor_layout.dart';
 import 'package:wwu_wash_and_dry/widgets/login.dart';
-import 'package:wwu_wash_and_dry/widgets/home_page.dart';
 
 // all tests in this file must be run from a web platform
 // use flutter test --platform chrome to execute properly
-// for this file: flutter test test\widgets_test.dart --platform chrome
-// Other useful additions: -r expanded
 
 void main() {
   group('Login Tests', () {
