@@ -17921,8 +17921,8 @@ tk:function tk(){this.a="#0"
 this.b=""
 this.d=!1},
 aeN(){var s,r=J.cN(A.a8M().gxi().j(0,"token")),q=J.cN(A.a8M().gxi().j(0,"error"))
-if(B.c.v(A.a8M().i(0),"localhost"))r="This_token_has_no_features"
-if($.au==null)A.am0()
+if(B.c.v(A.a8M().i(0),"localhost")){r="This_token_has_no_features"
+q="null"}if($.au==null)A.am0()
 s=$.au
 s.HX(new A.vW(r,q,null))
 s.yg()},
@@ -57691,7 +57691,7 @@ else s.ai(new A.a5b(s))},
 I(a){var s,r,q=this
 if(!q.e){s=q.a
 r=s.d
-if(r!==""){A.mC(r)
+if(r!=="null"){A.mC(r)
 q.d="AuthFailed"
 q.e=!0}else{s=s.c
 if(s!=="")q.d=s}}return new A.Cq(q.d,q.gTR(),null)}}
