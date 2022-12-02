@@ -17,6 +17,7 @@ import 'package:wwu_wash_and_dry/widgets/home_page.dart';
 // use flutter test --platform chrome to execute properly
 // for this file: flutter test test\widgets_test.dart --platform chrome
 // Other useful additions: -r expanded
+
 void main() {
   group('Login Tests', () {
     testWidgets("Login returns a Login_page on receiving a '-1'",
@@ -54,11 +55,13 @@ void main() {
       await tester.pumpWidget(const WWUApp('', ''));
       expect(find.text('Login Using WWU Account'), findsOneWidget);
     });
+
     testWidgets('Error WWU starts on Error Page', (WidgetTester tester) async {
       // Build our app and trigger a frame.
       await tester.pumpWidget(const WWUApp('dasdfs', '1'));
       expect(find.text('Return to login page'), findsOneWidget);
     });
+
     testWidgets('Error Page click sends you to login',
         (WidgetTester tester) async {
       // Build our app and trigger a frame.
@@ -70,24 +73,54 @@ void main() {
       expect(find.text('WWU Wash and Dry Login'), findsOneWidget);
     });
   });
-  group('Drop Down Tests', () {
-    testWidgets('there are two floor drop downs', (WidgetTester tester) async {
+
+  group('Floor Layout Tests', () {
+    testWidgets('Testing with an empty list from floor class',
+        (WidgetTester tester) async {
       // Build our app and trigger a frame.
-      await tester.pumpWidget(const HomePage('This_token_has_no_features'));
-      // final firstDD = find.byType(DropDownList);
-      expect(find.byType(DropDownList), findsNWidgets(2));
+      final List<List<String>> test = [
+        [''],
+        ['']
+      ];
+      await tester
+          .pumpWidget(FloorLayout(floorObj: Floor(0, test[0], test[1])));
+      expect(
+          find.descendant(
+            of: find.byType(ListTile),
+            matching: find.text('Washer 1'),
+          ),
+          findsNothing,);
     });
-    final dropDowns = find.byType(DropdownMenuItem<String>);
-    testWidgets('drop downs have expected size', (WidgetTester tester) async {
-      await tester.pumpWidget(const HomePage('This_token_has_no_features'));
-      expect(dropDowns, findsNWidgets(10));
-    });
-    testWidgets('drop downs have expected format', (WidgetTester tester) async {
-      await tester.pumpWidget(const HomePage('This_token_has_no_features'));
-      // final textValues = dropDowns.allCandidates.map((element) { return element.})
-      expect(dropDowns, findsNWidgets(10));
+
+    testWidgets('Testing with a list filled with input from floor class',
+        (WidgetTester tester) async {
+      // Build our app and trigger a frame.
+      await tester
+          .pumpWidget(FloorLayout(floorObj: Floor(0, sittner[0], sittner[1])));
+      expect(
+          find.descendant(
+            of: find.byType(ListTile),
+            matching: find.text('Washer 1'),
+          ),
+          findsOneWidget,);
+      expect(
+          find.descendant(
+            of: find.byType(ListTile),
+            matching: find.text('Dryer 1'),
+          ),
+          findsOneWidget,);
+      expect(
+          find.descendant(
+            of: find.byType(ListTile),
+            matching: find.text('Washer 2'),
+          ),
+          findsOneWidget,);
+      expect(
+          find.descendant(
+            of: find.byType(ListTile),
+            matching: find.text('Dryer 2'),
+          ),
+          findsOneWidget,);
     });
   });
-
-  group('');
 }

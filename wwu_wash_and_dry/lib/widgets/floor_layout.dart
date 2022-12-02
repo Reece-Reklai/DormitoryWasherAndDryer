@@ -91,19 +91,30 @@ class _FloorLayout extends State<FloorLayout> {
                               style: const ButtonStyle(
                                 backgroundColor: MyColor(),
                               ),
-                              onPressed: () => showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    const AlertDialog(
-                                  title: Text('Dummy Alert Dialog'),
+                              title: Text(
+                                '${widget.floorObj.getWasherList[i].getType} ${widget.floorObj.getWasherList[i].getID}',
+                                style: const TextStyle(
+                                  color: Colors.white,
                                 ),
                               ),
-                              child: const Icon(Icons.report),
+                              tileColor:
+                                  getColor(widget.floorObj.getWasherList[i]),
+                                  
+                              // This will open Team 2's self report widget when it is completed
+                              onLongPress: () => {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      const AlertDialog(
+                                    title: Text('Dummy Alert Dialog'),
+                                  ),
+                                ),
+                              },
                             ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
                 ),
                 Container(
@@ -153,22 +164,33 @@ class _FloorLayout extends State<FloorLayout> {
                               style: const ButtonStyle(
                                 backgroundColor: MyColor(),
                               ),
-                              onPressed: () => showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    const AlertDialog(
-                                  title: Text('Dummy Alert Dialog'),
+                              title: Text(
+                                '${widget.floorObj.getDryerList[i].getType} ${widget.floorObj.getDryerList[i].getID}',
+                                style: const TextStyle(
+                                  color: Colors.white,
                                 ),
                               ),
-                              child: const Icon(Icons.report),
+                              tileColor:
+                                  getColor(widget.floorObj.getDryerList[i]),
+
+                              // This will open Team 2's self report widget when it is completed
+                              onLongPress: () => {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      const AlertDialog(
+                                    title: Text('Dummy Alert Dialog'),
+                                  ),
+                                ),
+                              },
                             ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

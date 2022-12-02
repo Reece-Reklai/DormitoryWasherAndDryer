@@ -1,0 +1,48 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Flutter Test
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**/README.md'
+  pull_request:
+    branches: [main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+  # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    name: flutter build
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.5'
+          channel: 'stable'
+      - name: Get Flutter Version
+        working-directory: ./wwu_wash_and_dry
+        run: flutter --version
+      - name: Force upgrading Dart SDK
+        working-directory: ./wwu_wash_and_dry
+        run: flutter upgrade --force
+      - name: Get Pub
+        working-directory: ./wwu_wash_and_dry
+        run: flutter pub get
+      - name: Run Widget Unit Tests
+        working-directory: ./wwu_wash_and_dry
+        run: flutter test --platform chrome test/widgets_test.dart
+      - name: Run Class Unit Tests
+        working-directory: ./wwu_wash_and_dry
+        run: flutter test test/classes_test.dart
