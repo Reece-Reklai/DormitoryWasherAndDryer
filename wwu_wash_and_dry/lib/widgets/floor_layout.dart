@@ -48,7 +48,10 @@ class _FloorLayout extends State<FloorLayout> {
                   margin: const EdgeInsets.all(12),
                   child: const Text(
                     'Washers',
-                    style: TextStyle(fontSize: 30),
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w500,
+                      ),
                   ),
                 ),
                 Expanded(
@@ -58,51 +61,110 @@ class _FloorLayout extends State<FloorLayout> {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      childAspectRatio: 10/1,
+                      childAspectRatio: 12 / 1, // use this to control the height of cards
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
                     ),
                     itemBuilder: (ctx, index) {
                       return Container(
-                          color: getColor(widget.floorObj.getWasherList[index]),
-                          height: 100,
-                          margin: const EdgeInsets.all(4),
-                          child: RoundedRectangleBorder (borderRadius: BorderRadius.circular(20.0),
+                        margin: const EdgeInsets.all(4),
+                        child: Material(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
-                          Text(
-                            '${widget.floorObj.getWasherList[index].getType} ${widget.floorObj.getWasherList[index].getID}',
-                            style: const TextStyle(
-                              color: Colors.white,
+                          elevation: 6,
+                          child: ListTile(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
                             ),
-                          )
-                          // child: Container(
-                          //   height: 100,
-                          //   color: getColor(widget.floorObj.getWasherList[index]),
-                          //   child: Text(
-                          //     '${widget.floorObj.getWasherList[index].getType} ${widget.floorObj.getWasherList[index].getID}',
-                          //     style: const TextStyle(
-                          //       color: Colors.white,
-                          //     ),
-                          //   ),
+                            title: Text(
+                              '${widget.floorObj.getWasherList[index].getType} ${widget.floorObj.getWasherList[index].getID}',
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            tileColor:
+                                getColor(widget.floorObj.getWasherList[index]),
 
-                          // '${widget.floorObj.getDryerList} ${widget.machines[i].getID}')
+                            // This will open Team 2's self report widget when it is completed
+                            trailing: ElevatedButton(
+                              style: const ButtonStyle(
+                                backgroundColor: MyColor(),
+                              ),
+                              onPressed: () => showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    const AlertDialog(
+                                  title: Text('Dummy Alert Dialog'),
+                                ),
+                              ),
+                              child: const Icon(Icons.report),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(12),
+                  child: const Text(
+                    'Dryers',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w500,
+                      ),
+                  ),
+                ),
+                Expanded(
+                  child: GridView.builder(
+                    itemCount: widget.floorObj.getWasherList.length,
+                    padding: const EdgeInsets.all(30),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 12 / 1, // use this to control the height of cards
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemBuilder: (ctx, index) {
+                      return Container(
+                        margin: const EdgeInsets.all(4),
+                        child: Material(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          elevation: 6,
+                          child: ListTile(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            title: Text(
+                              '${widget.floorObj.getDryerList[index].getType} ${widget.floorObj.getDryerList[index].getID}',
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            tileColor:
+                                getColor(widget.floorObj.getDryerList[index]),
 
-                          // This will open Team 2's self report widget when it is completed
-                          // trailing: ElevatedButton(
-                          //   style: const ButtonStyle(
-                          //     backgroundColor: MyColor(),
-                          //   ),
-                          //   onPressed: () => showDialog(
-                          //     context: context,
-                          //     builder: (BuildContext context) =>
-                          //         const AlertDialog(
-                          //       title: Text('Dummy Alert Dialog'),
-                          //     ),
-                          //   ),
-                          //   child: const Icon(Icons.report),
-                          // ),
-                          // ),
-                          );
+                            // This will open Team 2's self report widget when it is completed
+                            trailing: ElevatedButton(
+                              style: const ButtonStyle(
+                                backgroundColor: MyColor(),
+                              ),
+                              onPressed: () => showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    const AlertDialog(
+                                  title: Text('Dummy Alert Dialog'),
+                                ),
+                              ),
+                              child: const Icon(Icons.report),
+                            ),
+                          ),
+                        ),
+                      );
                     },
                   ),
                 ),
