@@ -54,53 +54,55 @@ class _FloorLayout extends State<FloorLayout> {
                 Expanded(
                   child: GridView.builder(
                     itemCount: widget.floorObj.getWasherList.length,
+                    padding: const EdgeInsets.all(30),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
+                      childAspectRatio: 10/1,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
                     ),
                     itemBuilder: (ctx, index) {
                       return Container(
-                        height: 100,
-                        margin: const EdgeInsets.all(4),
-                        child: Material(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
+                          color: getColor(widget.floorObj.getWasherList[index]),
+                          height: 100,
+                          margin: const EdgeInsets.all(4),
+                          child: RoundedRectangleBorder (borderRadius: BorderRadius.circular(20.0),
                           ),
-                          elevation: 6,
-                          child: ListTile(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
+                          Text(
+                            '${widget.floorObj.getWasherList[index].getType} ${widget.floorObj.getWasherList[index].getID}',
+                            style: const TextStyle(
+                              color: Colors.white,
                             ),
-                            title: Text(
-                              '${widget.floorObj.getWasherList[index].getType} ${widget.floorObj.getWasherList[index].getID}',
-                              style: const TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                            // '${widget.floorObj.getDryerList} ${widget.machines[i].getID}'),
+                          )
+                          // child: Container(
+                          //   height: 100,
+                          //   color: getColor(widget.floorObj.getWasherList[index]),
+                          //   child: Text(
+                          //     '${widget.floorObj.getWasherList[index].getType} ${widget.floorObj.getWasherList[index].getID}',
+                          //     style: const TextStyle(
+                          //       color: Colors.white,
+                          //     ),
+                          //   ),
 
-                            tileColor:
-                                getColor(widget.floorObj.getWasherList[index]),
+                          // '${widget.floorObj.getDryerList} ${widget.machines[i].getID}')
 
-                            // This will open Team 2's self report widget when it is completed
-                            trailing: ElevatedButton(
-                              style: const ButtonStyle(
-                                backgroundColor: MyColor(),
-                              ),
-                              onPressed: () => showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    const AlertDialog(
-                                  title: Text('Dummy Alert Dialog'),
-                                ),
-                              ),
-                              child: const Icon(Icons.report),
-                            ),
-                          ),
-                        ),
-                      );
+                          // This will open Team 2's self report widget when it is completed
+                          // trailing: ElevatedButton(
+                          //   style: const ButtonStyle(
+                          //     backgroundColor: MyColor(),
+                          //   ),
+                          //   onPressed: () => showDialog(
+                          //     context: context,
+                          //     builder: (BuildContext context) =>
+                          //         const AlertDialog(
+                          //       title: Text('Dummy Alert Dialog'),
+                          //     ),
+                          //   ),
+                          //   child: const Icon(Icons.report),
+                          // ),
+                          // ),
+                          );
                     },
                   ),
                 ),
