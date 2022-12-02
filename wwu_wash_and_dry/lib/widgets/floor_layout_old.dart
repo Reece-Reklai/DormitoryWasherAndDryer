@@ -48,24 +48,13 @@ class _FloorLayout extends State<FloorLayout> {
                   margin: const EdgeInsets.all(12),
                   child: const Text(
                     'Washers',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
-                      ),
+                    style: TextStyle(fontSize: 30),
                   ),
                 ),
                 Expanded(
-                  child: GridView.builder(
+                  child: ListView.builder(
                     itemCount: widget.floorObj.getWasherList.length,
-                    padding: const EdgeInsets.all(30),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 12 / 1, // use this to control the height of cards
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                    ),
-                    itemBuilder: (ctx, index) {
+                    itemBuilder: (context, i) {
                       return Container(
                         margin: const EdgeInsets.all(4),
                         child: Material(
@@ -78,67 +67,47 @@ class _FloorLayout extends State<FloorLayout> {
                               borderRadius: BorderRadius.circular(20.0),
                             ),
                             title: Text(
-                              '${widget.floorObj.getWasherList[index].getType} ${widget.floorObj.getWasherList[index].getID}',
+                              '${widget.floorObj.getWasherList[i].getType} ${widget.floorObj.getWasherList[i].getID}',
                               style: const TextStyle(
                                 color: Colors.white,
                               ),
                             ),
+                            // '${widget.floorObj.getDryerList} ${widget.machines[i].getID}'),
+
                             tileColor:
-                                getColor(widget.floorObj.getWasherList[index]),
+                                getColor(widget.floorObj.getWasherList[i]),
 
                             // This will open Team 2's self report widget when it is completed
                             trailing: ElevatedButton(
                               style: const ButtonStyle(
                                 backgroundColor: MyColor(),
                               ),
-                              title: Text(
-                                '${widget.floorObj.getWasherList[i].getType} ${widget.floorObj.getWasherList[i].getID}',
-                                style: const TextStyle(
-                                  color: Colors.white,
+                              onPressed: () => showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    const AlertDialog(
+                                  title: Text('Dummy Alert Dialog'),
                                 ),
                               ),
-                              tileColor:
-                                  getColor(widget.floorObj.getWasherList[i]),
-                                  
-                              // This will open Team 2's self report widget when it is completed
-                              onLongPress: () => {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      const AlertDialog(
-                                    title: Text('Dummy Alert Dialog'),
-                                  ),
-                                ),
-                              },
+                              child: const Icon(Icons.report),
                             ),
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   ),
                 ),
                 Container(
                   margin: const EdgeInsets.all(12),
                   child: const Text(
                     'Dryers',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
-                      ),
+                    style: TextStyle(fontSize: 30),
                   ),
                 ),
                 Expanded(
-                  child: GridView.builder(
-                    itemCount: widget.floorObj.getWasherList.length,
-                    padding: const EdgeInsets.all(30),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 12 / 1, // use this to control the height of cards
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                    ),
-                    itemBuilder: (ctx, index) {
+                  child: ListView.builder(
+                    itemCount: widget.floorObj.getDryerList.length,
+                    itemBuilder: (context, i) {
                       return Container(
                         margin: const EdgeInsets.all(4),
                         child: Material(
@@ -151,46 +120,35 @@ class _FloorLayout extends State<FloorLayout> {
                               borderRadius: BorderRadius.circular(20.0),
                             ),
                             title: Text(
-                              '${widget.floorObj.getDryerList[index].getType} ${widget.floorObj.getDryerList[index].getID}',
+                              '${widget.floorObj.getDryerList[i].getType} ${widget.floorObj.getDryerList[i].getID}',
                               style: const TextStyle(
                                 color: Colors.white,
                               ),
                             ),
                             tileColor:
-                                getColor(widget.floorObj.getDryerList[index]),
+                                getColor(widget.floorObj.getDryerList[i]),
 
                             // This will open Team 2's self report widget when it is completed
                             trailing: ElevatedButton(
                               style: const ButtonStyle(
                                 backgroundColor: MyColor(),
                               ),
-                              title: Text(
-                                '${widget.floorObj.getDryerList[i].getType} ${widget.floorObj.getDryerList[i].getID}',
-                                style: const TextStyle(
-                                  color: Colors.white,
+                              onPressed: () => showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    const AlertDialog(
+                                  title: Text('Dummy Alert Dialog'),
                                 ),
                               ),
-                              tileColor:
-                                  getColor(widget.floorObj.getDryerList[i]),
-
-                              // This will open Team 2's self report widget when it is completed
-                              onLongPress: () => {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      const AlertDialog(
-                                    title: Text('Dummy Alert Dialog'),
-                                  ),
-                                ),
-                              },
+                              child: const Icon(Icons.report),
                             ),
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
