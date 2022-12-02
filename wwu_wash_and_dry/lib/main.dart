@@ -6,9 +6,9 @@ import 'package:wwu_wash_and_dry/widgets/login.dart';
 
 void main() {
   // collect access key with a query to the current url
-  var accessToken = (Uri.base.queryParameters['token'] ?? '').toString();
+  var accessToken = (Uri.base.queryParameters['token']).toString();
   // collect error with a query to the current url
-  final error = (Uri.base.queryParameters['error'] ?? '').toString();
+  final error = (Uri.base.queryParameters['error']).toString();
 
   // continue using localhost if you start on localhost
   // WARNING: this completely disables single sign on and all
@@ -43,7 +43,7 @@ class _WWUAppState extends State<WWUApp> {
       setState(() {
         // change webpage to the single sign on site and if it fails change key to AuthFailed to trigger error page.
         html.window.open(
-          'https://login.microsoftonline.com/d958f048-e431-4277-9c8d-ebfb75e7aa64/oauth2/v2.0/authorize?client_id=b011ad62-bda8-449f-99d3-519a3d973218&response_type=code&response_mode=query&scope=https://graph.microsoft.com/User.Read&redirect_uri=https://172.27.4.142:5000/login/callback',
+          'https://login.microsoftonline.com/d958f048-e431-4277-9c8d-ebfb75e7aa64/oauth2/v2.0/authorize?client_id=b011ad62-bda8-449f-99d3-519a3d973218&response_type=code&response_mode=query&scope=https://graph.microsoft.com/User.Read&redirect_uri=https://wwuwashanddryapi.cs.wallawalla.edu/login/callback',
           '_self',
         );
         _accessKey = 'AuthFailed';

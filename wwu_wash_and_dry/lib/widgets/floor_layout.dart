@@ -34,121 +34,113 @@ class _FloorLayout extends State<FloorLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(24),
-        color: const Color.fromARGB(255, 177, 177, 177),
-        child: Material(
-          elevation: 12,
-          child: Container(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              children: <Widget>[
-                Container(
-                  margin: const EdgeInsets.all(12),
-                  child: const Text(
-                    'Washers',
-                    style: TextStyle(fontSize: 30),
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          padding: const EdgeInsets.all(24),
+          color: const Color.fromARGB(255, 177, 177, 177),
+          child: Material(
+            elevation: 12,
+            child: Container(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    margin: const EdgeInsets.all(12),
+                    child: const Text(
+                      'Washers',
+                      style: TextStyle(fontSize: 30),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: widget.floorObj.getWasherList.length,
-                    itemBuilder: (context, i) {
-                      return Container(
-                        margin: const EdgeInsets.all(4),
-                        child: Material(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 6,
-                          child: ListTile(
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: widget.floorObj.getWasherList.length,
+                      itemBuilder: (context, i) {
+                        return Container(
+                          margin: const EdgeInsets.all(4),
+                          child: Material(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
-                            title: Text(
-                              '${widget.floorObj.getWasherList[i].getType} ${widget.floorObj.getWasherList[i].getID}',
-                              style: const TextStyle(
-                                color: Colors.white,
+                            elevation: 6,
+                            child: ListTile(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
                               ),
-                            ),
-                            // '${widget.floorObj.getDryerList} ${widget.machines[i].getID}'),
-
-                            tileColor:
-                                getColor(widget.floorObj.getWasherList[i]),
-
-                            // This will open Team 2's self report widget when it is completed
-                            trailing: ElevatedButton(
-                              style: const ButtonStyle(
-                                backgroundColor: MyColor(),
-                              ),
-                              onPressed: () => showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    const AlertDialog(
-                                  title: Text('Dummy Alert Dialog'),
+                              title: Text(
+                                '${widget.floorObj.getWasherList[i].getType} ${widget.floorObj.getWasherList[i].getID}',
+                                style: const TextStyle(
+                                  color: Colors.white,
                                 ),
                               ),
-                              child: const Icon(Icons.report),
+                              tileColor:
+                                  getColor(widget.floorObj.getWasherList[i]),
+                                  
+                              // This will open Team 2's self report widget when it is completed
+                              onLongPress: () => {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      const AlertDialog(
+                                    title: Text('Dummy Alert Dialog'),
+                                  ),
+                                ),
+                              },
                             ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(12),
-                  child: const Text(
-                    'Dryers',
-                    style: TextStyle(fontSize: 30),
+                  Container(
+                    margin: const EdgeInsets.all(12),
+                    child: const Text(
+                      'Dryers',
+                      style: TextStyle(fontSize: 30),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: widget.floorObj.getDryerList.length,
-                    itemBuilder: (context, i) {
-                      return Container(
-                        margin: const EdgeInsets.all(4),
-                        child: Material(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 6,
-                          child: ListTile(
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: widget.floorObj.getDryerList.length,
+                      itemBuilder: (context, i) {
+                        return Container(
+                          margin: const EdgeInsets.all(4),
+                          child: Material(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
-                            title: Text(
-                              '${widget.floorObj.getDryerList[i].getType} ${widget.floorObj.getDryerList[i].getID}',
-                              style: const TextStyle(
-                                color: Colors.white,
+                            elevation: 6,
+                            child: ListTile(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
                               ),
-                            ),
-                            tileColor:
-                                getColor(widget.floorObj.getDryerList[i]),
-
-                            // This will open Team 2's self report widget when it is completed
-                            trailing: ElevatedButton(
-                              style: const ButtonStyle(
-                                backgroundColor: MyColor(),
-                              ),
-                              onPressed: () => showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    const AlertDialog(
-                                  title: Text('Dummy Alert Dialog'),
+                              title: Text(
+                                '${widget.floorObj.getDryerList[i].getType} ${widget.floorObj.getDryerList[i].getID}',
+                                style: const TextStyle(
+                                  color: Colors.white,
                                 ),
                               ),
-                              child: const Icon(Icons.report),
+                              tileColor:
+                                  getColor(widget.floorObj.getDryerList[i]),
+
+                              // This will open Team 2's self report widget when it is completed
+                              onLongPress: () => {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      const AlertDialog(
+                                    title: Text('Dummy Alert Dialog'),
+                                  ),
+                                ),
+                              },
                             ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
