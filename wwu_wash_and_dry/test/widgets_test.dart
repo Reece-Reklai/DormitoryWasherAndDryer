@@ -88,4 +88,6 @@ void main() {
       expect(dropDowns, findsNWidgets(10));
     });
   });
+
+  group('');
 }
