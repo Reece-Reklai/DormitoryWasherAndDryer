@@ -34,62 +34,38 @@ class _FloorLayout extends State<FloorLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(24),
-        color: const Color.fromARGB(255, 177, 177, 177),
-        child: Material(
-          elevation: 12,
-          child: Container(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              children: <Widget>[
-                Container(
-                  margin: const EdgeInsets.all(12),
-                  child: const Text(
-                    'Washers',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
-                      ),
-                  ),
-                ),
-                Expanded(
-                  child: GridView.builder(
-                    itemCount: widget.floorObj.getWasherList.length,
-                    padding: const EdgeInsets.all(30),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 12 / 1, // use this to control the height of cards
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          padding: const EdgeInsets.all(24),
+          color: const Color.fromARGB(255, 177, 177, 177),
+          child: Material(
+            elevation: 12,
+            child: Container(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    margin: const EdgeInsets.all(12),
+                    child: const Text(
+                      'Washers',
+                      style: TextStyle(fontSize: 30),
                     ),
-                    itemBuilder: (ctx, index) {
-                      return Container(
-                        margin: const EdgeInsets.all(4),
-                        child: Material(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 6,
-                          child: ListTile(
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: widget.floorObj.getWasherList.length,
+                      itemBuilder: (context, i) {
+                        return Container(
+                          margin: const EdgeInsets.all(4),
+                          child: Material(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
-                            title: Text(
-                              '${widget.floorObj.getWasherList[index].getType} ${widget.floorObj.getWasherList[index].getID}',
-                              style: const TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                            tileColor:
-                                getColor(widget.floorObj.getWasherList[index]),
-
-                            // This will open Team 2's self report widget when it is completed
-                            trailing: ElevatedButton(
-                              style: const ButtonStyle(
-                                backgroundColor: MyColor(),
+                            elevation: 6,
+                            child: ListTile(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
                               ),
                               title: Text(
                                 '${widget.floorObj.getWasherList[i].getType} ${widget.floorObj.getWasherList[i].getID}',
@@ -116,53 +92,27 @@ class _FloorLayout extends State<FloorLayout> {
                       },
                     ),
                   ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(12),
-                  child: const Text(
-                    'Dryers',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
-                      ),
-                  ),
-                ),
-                Expanded(
-                  child: GridView.builder(
-                    itemCount: widget.floorObj.getWasherList.length,
-                    padding: const EdgeInsets.all(30),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 12 / 1, // use this to control the height of cards
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
+                  Container(
+                    margin: const EdgeInsets.all(12),
+                    child: const Text(
+                      'Dryers',
+                      style: TextStyle(fontSize: 30),
                     ),
-                    itemBuilder: (ctx, index) {
-                      return Container(
-                        margin: const EdgeInsets.all(4),
-                        child: Material(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 6,
-                          child: ListTile(
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: widget.floorObj.getDryerList.length,
+                      itemBuilder: (context, i) {
+                        return Container(
+                          margin: const EdgeInsets.all(4),
+                          child: Material(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
-                            title: Text(
-                              '${widget.floorObj.getDryerList[index].getType} ${widget.floorObj.getDryerList[index].getID}',
-                              style: const TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                            tileColor:
-                                getColor(widget.floorObj.getDryerList[index]),
-
-                            // This will open Team 2's self report widget when it is completed
-                            trailing: ElevatedButton(
-                              style: const ButtonStyle(
-                                backgroundColor: MyColor(),
+                            elevation: 6,
+                            child: ListTile(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
                               ),
                               title: Text(
                                 '${widget.floorObj.getDryerList[i].getType} ${widget.floorObj.getDryerList[i].getID}',
