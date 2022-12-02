@@ -58,8 +58,9 @@ class _WWUAppState extends State<WWUApp> {
     // widgets depending on the accessKey
     // but sets access key depending on the queries for this websites
     // access key and error
+    print(widget.accessToken);
     if (!_errorState) {
-      if (widget.error != 'null') {
+      if (widget.error != 'null' && widget.error != '') {
         print(widget.error);
         _accessKey = 'AuthFailed';
         _errorState = true;
