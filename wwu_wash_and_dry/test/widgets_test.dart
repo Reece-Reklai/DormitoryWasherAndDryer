@@ -71,6 +71,24 @@ void main() {
       expect(find.text('WWU Wash and Dry Login'), findsOneWidget);
     });
   });
+  group('Drop Down Tests', () {
+    testWidgets('there are two floor drop downs', (WidgetTester tester) async {
+      // Build our app and trigger a frame.
+      await tester.pumpWidget(const HomePage('This_token_has_no_features'));
+      // final firstDD = find.byType(DropDownList);
+      expect(find.byType(DropDownList), findsNWidgets(2));
+    });
+    final dropDowns = find.byType(DropdownMenuItem<String>);
+    testWidgets('drop downs have expected size', (WidgetTester tester) async {
+      await tester.pumpWidget(const HomePage('This_token_has_no_features'));
+      expect(dropDowns, findsNWidgets(10));
+    });
+    testWidgets('drop downs have expected format', (WidgetTester tester) async {
+      await tester.pumpWidget(const HomePage('This_token_has_no_features'));
+      // final textValues = dropDowns.allCandidates.map((element) { return element.})
+      expect(dropDowns, findsNWidgets(10));
+    });
+  });
 
   group('Floor Layout Tests', () {
     testWidgets('Testing with an empty list from floor class',
@@ -83,11 +101,12 @@ void main() {
       await tester
           .pumpWidget(FloorLayout(floorObj: Floor(0, test[0], test[1])));
       expect(
-          find.descendant(
-            of: find.byType(ListTile),
-            matching: find.text('Washer 1'),
-          ),
-          findsNothing,);
+        find.descendant(
+          of: find.byType(ListTile),
+          matching: find.text('Washer 1'),
+        ),
+        findsNothing,
+      );
     });
 
     testWidgets('Testing with a list filled with input from floor class',
@@ -96,29 +115,33 @@ void main() {
       await tester
           .pumpWidget(FloorLayout(floorObj: Floor(0, sittner[0], sittner[1])));
       expect(
-          find.descendant(
-            of: find.byType(ListTile),
-            matching: find.text('Washer 1'),
-          ),
-          findsOneWidget,);
+        find.descendant(
+          of: find.byType(ListTile),
+          matching: find.text('Washer 1'),
+        ),
+        findsOneWidget,
+      );
       expect(
-          find.descendant(
-            of: find.byType(ListTile),
-            matching: find.text('Dryer 1'),
-          ),
-          findsOneWidget,);
+        find.descendant(
+          of: find.byType(ListTile),
+          matching: find.text('Dryer 1'),
+        ),
+        findsOneWidget,
+      );
       expect(
-          find.descendant(
-            of: find.byType(ListTile),
-            matching: find.text('Washer 2'),
-          ),
-          findsOneWidget,);
+        find.descendant(
+          of: find.byType(ListTile),
+          matching: find.text('Washer 2'),
+        ),
+        findsOneWidget,
+      );
       expect(
-          find.descendant(
-            of: find.byType(ListTile),
-            matching: find.text('Dryer 2'),
-          ),
-          findsOneWidget,);
+        find.descendant(
+          of: find.byType(ListTile),
+          matching: find.text('Dryer 2'),
+        ),
+        findsOneWidget,
+      );
     });
   });
 }
