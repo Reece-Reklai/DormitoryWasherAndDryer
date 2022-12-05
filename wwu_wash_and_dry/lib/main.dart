@@ -8,13 +8,14 @@ void main() {
   // collect access key with a query to the current url
   var accessToken = (Uri.base.queryParameters['token']).toString();
   // collect error with a query to the current url
-  final error = (Uri.base.queryParameters['error']).toString();
+  var error = (Uri.base.queryParameters['error']).toString();
 
   // continue using localhost if you start on localhost
   // WARNING: this completely disables single sign on and all
   // of its features
   if (Uri.base.toString().contains('localhost')) {
     accessToken = 'This_token_has_no_features';
+    error = 'null';
   }
   runApp(WWUApp(accessToken, error));
 }
@@ -58,10 +59,10 @@ class _WWUAppState extends State<WWUApp> {
     // but sets access key depending on the queries for this websites
     // access key and error
     if (!_errorState) {
-      if (widget.error != '') {
+      if (widget.error != 'null' && widget.error != '') {
         _accessKey = 'AuthFailed';
         _errorState = true;
-      } else if (widget.accessToken != '') {
+      } else if (widget.accessToken != '' && widget.accessToken != 'null') {
         _accessKey = widget.accessToken;
       }
     }
