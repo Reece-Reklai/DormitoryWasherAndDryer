@@ -34,18 +34,6 @@ class _FloorLayout extends State<FloorLayout> {
 
   @override
   Widget build(BuildContext context) {
-    var screenwidth = MediaQuery.of(context).size.width;
-
-    double getAspectRatio() {
-      if (screenwidth < 400) {
-        return 1 / 3;
-      } else if (screenwidth < 600) {
-        return 1 / 6;
-      } else {
-        return 1 / 12;
-      }
-    }
-
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -71,10 +59,10 @@ class _FloorLayout extends State<FloorLayout> {
                     child: GridView.builder(
                       itemCount: widget.floorObj.getWasherList.length,
                       padding: const EdgeInsets.all(30),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio:
-                            getAspectRatio(), // use this to control the height of cards
+                        mainAxisExtent: 50,
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
                       ),
@@ -133,8 +121,7 @@ class _FloorLayout extends State<FloorLayout> {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio:
-                            12 / 1, // use this to control the height of cards
+                        mainAxisExtent: 50,
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
                       ),
