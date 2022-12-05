@@ -13,6 +13,7 @@ class FloorLayout extends StatefulWidget {
 
   String building = '';
   String floor = '';
+  double asspectRatio = 3 / 1;
 
   final Floor floorObj;
 
@@ -63,7 +64,7 @@ class _FloorLayout extends State<FloorLayout> {
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         childAspectRatio:
-                            12 / 1, // use this to control the height of cards
+                            6 / 1, // use this to control the height of cards
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
                       ),
