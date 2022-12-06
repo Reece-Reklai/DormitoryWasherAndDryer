@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wwu_wash_and_dry/class/floor.dart';
 import 'package:wwu_wash_and_dry/class/machine.dart';
+import 'package:wwu_wash_and_dry/widgets/popup.dart';
 // Created by Reece Reklai and Bradon Ladd
 
 // When the respective floor is clicked on the homepage, the class
