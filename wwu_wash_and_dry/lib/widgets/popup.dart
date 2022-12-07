@@ -4,7 +4,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:analyzer/dart/element/type.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -26,14 +25,14 @@ import 'package:http/http.dart' as http;
 //   }
 // }
 
-class Machine {
+class MachineData {
   // defaults
   String location = "";
   int floor = 0;
   int id = 0;
   String status = "";
   // int time = 0;
-  Machine(this.location, this.floor, this.id, this.status);
+  MachineData(this.location, this.floor, this.id, this.status);
 
   String getStatus() {
     return status;
@@ -58,8 +57,9 @@ Future popup(
   var time = 120;
   var readableTime = intToTimeLeft(time);
 
-  final Machine machine =
-      createMachine(dorm, floor, machineId, token) as Machine;
+  final MachineData machine =
+      // ignore: cast_nullable_to_non_nullable
+      createMachine(dorm, floor, machineId, token) as MachineData;
 
   return showDialog(
     context: context,
@@ -113,7 +113,7 @@ Future? createMachine(
   final body = jsonDecode(response.body);
   //final finishTime = body['Finish_Time'].toString();
 
-  return Machine(
+  return MachineData(
     dorm,
     int.parse(floor),
     int.parse(machineId),
