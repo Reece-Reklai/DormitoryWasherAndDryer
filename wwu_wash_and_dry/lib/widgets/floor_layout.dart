@@ -97,8 +97,13 @@ class _FloorLayout extends State<FloorLayout> {
                               ),
 
                               // This will open Team 2's self report widget when it is completed
-                              onLongPress: () => popup(context, building, floor, machineId, token)
-                              },
+                              onLongPress: () => popup(
+                                context,
+                                widget.building,
+                                widget.floor,
+                                (index + 1).toString(),
+                                widget.accessKey,
+                              ),
                             ),
                           ),
                         );

@@ -2,7 +2,9 @@
 
 import 'dart:async';
 import 'dart:convert';
+import 'dart:html';
 import 'dart:io';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -46,6 +48,7 @@ Future popup(
   String machineId,
   String token,
 ) {
+  log('data: we got into the popup class');
   // context - Required
   // location (floor or dormintory)
   // machine number or id
@@ -98,16 +101,16 @@ Future? createMachine(
   const String _baseUrl = "https://wwuwashanddryapi.cs.wallawalla.edu/machine/";
   final String url = "$dorm/$floor/$machineId";
   const String tempToken =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJjYWI1MzA4MS1hNmVhLTRiMmItOTM3OS01ZjM5MjdmMDI0MWUiLCJleHAiOjE2NzAyOTk5MDJ9.1r5K06HDubDtfMkkSWHAdsQKJS2ryvHWXgKUTNxSfuE";
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJjYWI1MzA4MS1hNmVhLTRiMmItOTM3OS01ZjM5MjdmMDI0MWUiLCJleHAiOjE2NzAzODczOTZ9.zCOn97gZvJz31nsHjHi5eC3O98wK_Su_wJKc_6BLBAg";
   // final String temp = Uri.base as String;
   // final List values = temp.split("token=");
   // // ignore: unused_local_variable
   // final String accessToken = values[1] as String;
-
+  log(_baseUrl + url);
   final response = await http.get(
     Uri.parse(_baseUrl + url),
     headers: {
-      HttpHeaders.authorizationHeader: token,
+      HttpHeaders.authorizationHeader: tempToken,
     },
   );
   final body = jsonDecode(response.body);
