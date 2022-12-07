@@ -63,8 +63,7 @@ class _FloorLayout extends State<FloorLayout> {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio:
-                            12 / 1, // use this to control the height of cards
+                        mainAxisExtent: 50,
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
                       ),
@@ -123,8 +122,7 @@ class _FloorLayout extends State<FloorLayout> {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio:
-                            12 / 1, // use this to control the height of cards
+                        mainAxisExtent: 50,
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
                       ),
