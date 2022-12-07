@@ -72,6 +72,8 @@ class _DropDownMain extends State<DropDownMain> {
 
     setState(() {
       currentDisplay = floorObj;
+      buildingName = selectedBuilding;
+      floorNumber = floor.toString();
     });
   }
 
@@ -109,12 +111,13 @@ class _DropDownMain extends State<DropDownMain> {
             ),
           ),
           Expanded(
-              child: FloorLayout(
-            floorObj: currentDisplay,
-            building: buildingName,
-            floor: floorNumber,
-            accessKey: singleSignOnKey,
-          )),
+            child: FloorLayout(
+              floorObj: currentDisplay,
+              building: buildingName,
+              floor: floorNumber,
+              accessKey: singleSignOnKey,
+            ),
+          ),
         ],
       ),
     );
