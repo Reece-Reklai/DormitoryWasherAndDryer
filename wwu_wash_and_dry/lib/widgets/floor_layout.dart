@@ -10,10 +10,17 @@ import 'package:wwu_wash_and_dry/widgets/popup.dart';
 // to the self-report information(? maybe)
 // ignore: must_be_immutable
 class FloorLayout extends StatefulWidget {
-  FloorLayout({super.key, required this.floorObj, this.building = ''});
+  FloorLayout({
+    super.key,
+    required this.floorObj,
+    this.building = '',
+    this.floor = '',
+    this.accessKey = '',
+  });
 
   String building = '';
   String floor = '';
+  String accessKey = '';
 
   final Floor floorObj;
 

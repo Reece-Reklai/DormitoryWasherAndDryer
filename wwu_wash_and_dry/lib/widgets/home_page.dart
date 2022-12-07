@@ -21,15 +21,18 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: DropDownMain(),
+    final String singleSignOnKey = widget.singleSignOnKey;
+
+    return MaterialApp(
+      home: DropDownMain(singleSignOnKey),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class DropDownMain extends StatefulWidget {
-  const DropDownMain({super.key});
+  final String singleSignOnKey;
+  const DropDownMain(this.singleSignOnKey, {super.key});
 
   @override
   State<DropDownMain> createState() => _DropDownMain();
@@ -44,6 +47,8 @@ class _DropDownMain extends State<DropDownMain> {
 
   Floor currentDisplay = Floor(0, sittner[0], sittner[1]);
   String title = '${_sittner} S1';
+  String buildingName = _sittner;
+  String floorNumber = "1";
 
   // Needs to pass in washers and dyers
   void updatePage(String selectedFloor, String selectedBuilding) {
@@ -72,6 +77,7 @@ class _DropDownMain extends State<DropDownMain> {
 
   @override
   Widget build(BuildContext context) {
+    final String singleSignOnKey = widget.singleSignOnKey;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -102,7 +108,13 @@ class _DropDownMain extends State<DropDownMain> {
               ],
             ),
           ),
-          Expanded(child: FloorLayout(floorObj: currentDisplay)),
+          Expanded(
+              child: FloorLayout(
+            floorObj: currentDisplay,
+            building: buildingName,
+            floor: floorNumber,
+            accessKey: singleSignOnKey,
+          )),
         ],
       ),
     );
