@@ -90,14 +90,7 @@ class _FloorLayout extends State<FloorLayout> {
                               ),
 
                               // This will open Team 2's self report widget when it is completed
-                              onLongPress: () => {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      const AlertDialog(
-                                    title: Text('Dummy Alert Dialog'),
-                                  ),
-                                ),
+                              onLongPress: () => popup(context, building, floor, machineId, token)
                               },
                             ),
                           ),

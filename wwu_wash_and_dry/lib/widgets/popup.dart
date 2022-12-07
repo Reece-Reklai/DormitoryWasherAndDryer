@@ -107,7 +107,7 @@ Future? createMachine(
   final response = await http.get(
     Uri.parse(_baseUrl + url),
     headers: {
-      HttpHeaders.authorizationHeader: tempToken,
+      HttpHeaders.authorizationHeader: token,
     },
   );
   final body = jsonDecode(response.body);
