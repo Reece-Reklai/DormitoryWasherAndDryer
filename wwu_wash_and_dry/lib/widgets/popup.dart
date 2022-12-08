@@ -47,8 +47,7 @@ Future popup(
   String floor,
   String machineId,
   String token,
-) {
-  log('data: we got into the popup class');
+) async {
   // context - Required
   // location (floor or dormintory)
   // machine number or id
@@ -68,6 +67,9 @@ Future popup(
     context: context,
     builder: (context) => AlertDialog(
       title: Text('Washer $machineId'),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(32.0)),
+      ),
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         //position
@@ -75,7 +77,8 @@ Future popup(
         // wrap content in flutter
         children: <Widget>[
           Text('Status: ${machine.getStatus()}'),
-          Text('Time: $readableTime'),
+          // const Text('Status: Avalible'),
+          Text('Time Left: $readableTime'),
         ],
       ),
       actions: [
@@ -91,7 +94,7 @@ Future popup(
   );
 }
 
-Future? createMachine(
+Future<MachineData>? createMachine(
   String dorm,
   String floor,
   String machineId,
@@ -101,7 +104,7 @@ Future? createMachine(
   const String _baseUrl = "https://wwuwashanddryapi.cs.wallawalla.edu/machine/";
   final String url = "$dorm/$floor/$machineId";
   const String tempToken =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJjYWI1MzA4MS1hNmVhLTRiMmItOTM3OS01ZjM5MjdmMDI0MWUiLCJleHAiOjE2NzAzODczOTZ9.zCOn97gZvJz31nsHjHi5eC3O98wK_Su_wJKc_6BLBAg";
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJjYWI1MzA4MS1hNmVhLTRiMmItOTM3OS01ZjM5MjdmMDI0MWUiLCJleHAiOjE2NzA0Nzk0Mjl9.Y3b6j_miz-uTTq5RjYKK4mzTkMiJokx5yDR42IHsXYg";
   // final String temp = Uri.base as String;
   // final List values = temp.split("token=");
   // // ignore: unused_local_variable
@@ -110,7 +113,7 @@ Future? createMachine(
   final response = await http.get(
     Uri.parse(_baseUrl + url),
     headers: {
-      HttpHeaders.authorizationHeader: tempToken,
+      'access_token': tempToken,
     },
   );
   final body = jsonDecode(response.body);
