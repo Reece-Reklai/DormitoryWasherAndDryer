@@ -78,7 +78,7 @@ Future popup(
         children: <Widget>[
           Text('Status: ${machine.getStatus()}'),
           // const Text('Status: Avalible'),
-          Text('Time Left: $readableTime'),
+          Text('Finish Time: $readableTime'),
         ],
       ),
       actions: [
