@@ -53,15 +53,12 @@ Future popup(
   // machine number or id
   // machine type
 
-  // var test = Machine(MachineLocation.sittner, MachineType.washer, 1,
-  //     MachineStatus.unavailible);
-
   var time = 120;
   var readableTime = intToTimeLeft(time);
 
-  final MachineData machine =
+  final MachineData? machine =
       // ignore: cast_nullable_to_non_nullable
-      createMachine(dorm, floor, machineId, token) as MachineData;
+      await createMachine(dorm, floor, machineId, token);
 
   return showDialog(
     context: context,
@@ -76,9 +73,9 @@ Future popup(
         mainAxisSize: MainAxisSize.min,
         // wrap content in flutter
         children: <Widget>[
-          Text('Status: ${machine.getStatus()}'),
-          // const Text('Status: Avalible'),
-          Text('Time Left: $readableTime'),
+          //Text('Status: ${machine.getStatus()}'),
+          Text('Status: ${machine?.getStatus()}'),
+          Text('Finish Time: $readableTime'),
         ],
       ),
       actions: [
@@ -104,7 +101,7 @@ Future<MachineData>? createMachine(
   const String _baseUrl = "https://wwuwashanddryapi.cs.wallawalla.edu/machine/";
   final String url = "$dorm/$floor/$machineId";
   const String tempToken =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJjYWI1MzA4MS1hNmVhLTRiMmItOTM3OS01ZjM5MjdmMDI0MWUiLCJleHAiOjE2NzA0Nzk0Mjl9.Y3b6j_miz-uTTq5RjYKK4mzTkMiJokx5yDR42IHsXYg";
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJjYWI1MzA4MS1hNmVhLTRiMmItOTM3OS01ZjM5MjdmMDI0MWUiLCJleHAiOjE2NzA4NzkwMDN9._wCV4byFUkbS2eSHXOqyJO0NGi918G7Bk_6Qu-SOPG8";
   // final String temp = Uri.base as String;
   // final List values = temp.split("token=");
   // // ignore: unused_local_variable
@@ -113,7 +110,7 @@ Future<MachineData>? createMachine(
   final response = await http.get(
     Uri.parse(_baseUrl + url),
     headers: {
-      'access_token': tempToken,
+      'access_token': token,
     },
   );
   final body = jsonDecode(response.body);
