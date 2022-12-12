@@ -153,15 +153,16 @@ class _FloorLayout extends State<FloorLayout> {
                                   getColor(widget.floorObj.getDryerList[index]),
 
                               // This will open Team 2's self report widget when it is completed
-                              onLongPress: () => {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      const AlertDialog(
-                                    title: Text('Dummy Alert Dialog'),
-                                  ),
-                                ),
-                              },
+                              onLongPress: () => popup(
+                                context,
+                                widget.building,
+                                widget.floor,
+                                (index +
+                                        1 +
+                                        widget.floorObj.getWasherList.length)
+                                    .toString(),
+                                widget.accessKey,
+                              ),
                             ),
                           ),
                         );

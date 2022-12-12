@@ -33,11 +33,16 @@ class MachineData {
   int floor = 0;
   int id = 0;
   String status = "";
+  String time = "";
   // int time = 0;
-  MachineData(this.location, this.floor, this.id, this.status);
+  MachineData(this.location, this.floor, this.id, this.status, this.time);
 
   String getStatus() {
     return status;
+  }
+
+  String getTime() {
+    return time;
   }
 }
 
@@ -52,9 +57,6 @@ Future popup(
   // location (floor or dormintory)
   // machine number or id
   // machine type
-
-  var time = 120;
-  var readableTime = intToTimeLeft(time);
 
   final MachineData? machine =
       // ignore: cast_nullable_to_non_nullable
@@ -75,7 +77,7 @@ Future popup(
         children: <Widget>[
           Text('Status: ${machine?.getStatus()}'),
           // const Text('Status: Avalible'),
-          Text('Finish Time: $readableTime'),
+          Text('Finish Time: ${machine?.getTime()}'),
         ],
       ),
       actions: [
@@ -98,17 +100,13 @@ Future<MachineData>? createMachine(
   String token,
 ) async {
   // This function is meant to call the api and fill up the internal database for the pop up
-  const String _baseUrl = "https://wwuwashanddryapi.cs.wallawalla.edu/machine/";
+  const String baseUrl = "https://wwuwashanddryapi.cs.wallawalla.edu/machine/";
   final String url = "$dorm/$floor/$machineId";
-  const String tempToken =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJjYWI1MzA4MS1hNmVhLTRiMmItOTM3OS01ZjM5MjdmMDI0MWUiLCJleHAiOjE2NzA4NzkwMDN9._wCV4byFUkbS2eSHXOqyJO0NGi918G7Bk_6Qu-SOPG8";
-  // final String temp = Uri.base as String;
-  // final List values = temp.split("token=");
-  // // ignore: unused_local_variable
-  // final String accessToken = values[1] as String;
-  log(_baseUrl + url);
+  // const String tempToken =
+  //     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJjYWI1MzA4MS1hNmVhLTRiMmItOTM3OS01ZjM5MjdmMDI0MWUiLCJleHAiOjE2NzA4ODkzMjZ9.igsAxMp0nbfJiZC5t4oafTFHeTQkVu7VC0iNFNoWBHw";
+  log(baseUrl + url);
   final response = await http.get(
-    Uri.parse(_baseUrl + url),
+    Uri.parse(baseUrl + url),
     headers: {
       'access_token': token,
     },
@@ -121,18 +119,24 @@ Future<MachineData>? createMachine(
     int.parse(floor),
     int.parse(machineId),
     body['Status'].toString(),
+    twentyFourTotwelve(body['Finish_Time'].toString()),
   );
 }
 
-//https://dev.to/devlonoah/convert-integer-value-to-hour-minute-seconds-in-dart-48hc
-String intToTimeLeft(int value) {
-  int h, m, s;
-  h = value ~/ 3600;
-  m = (value - h * 3600) ~/ 60;
-  s = value - (h * 3600) - (m * 60);
-  // String hourLeft = h.toString().length < 2 ? "0" + h.toString() : h.toString();
-  final String minuteLeft = m.toString().length < 2 ? "0$m" : m.toString();
-  final String secondsLeft = s.toString().length < 2 ? "0$s" : s.toString();
-  final String result = "$minuteLeft:$secondsLeft";
-  return result;
+String twentyFourTotwelve(String time) {
+  if (time == "null") {
+    return "None";
+  }
+  final times = time.split(':');
+  var hours = int.parse(times[0]);
+  var returnTime = "";
+  if (hours < 12) {
+    returnTime = "$hours:${times[1]} AM";
+  } else if (hours == 12) {
+    returnTime = "$hours:${times[1]} PM";
+  } else {
+    hours -= 12;
+    returnTime = "$hours:${times[1]} PM";
+  }
+  return returnTime;
 }
