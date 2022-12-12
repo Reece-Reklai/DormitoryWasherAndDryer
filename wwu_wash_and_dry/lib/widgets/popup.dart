@@ -73,13 +73,8 @@ Future popup(
         mainAxisSize: MainAxisSize.min,
         // wrap content in flutter
         children: <Widget>[
-<<<<<<< HEAD
-          //Text('Status: ${machine.getStatus()}'),
           Text('Status: ${machine?.getStatus()}'),
-=======
-          Text('Status: ${machine.getStatus()}'),
           // const Text('Status: Avalible'),
->>>>>>> cc9a3c98b51dc5ad5091bab92aa3e721c4611278
           Text('Finish Time: $readableTime'),
         ],
       ),
