@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wwu_wash_and_dry/class/floor.dart';
 import 'package:wwu_wash_and_dry/class/machine.dart';
+import 'package:wwu_wash_and_dry/widgets/popup.dart';
 // Created by Reece Reklai and Bradon Ladd
 
 // When the respective floor is clicked on the homepage, the class
@@ -9,10 +10,17 @@ import 'package:wwu_wash_and_dry/class/machine.dart';
 // to the self-report information(? maybe)
 // ignore: must_be_immutable
 class FloorLayout extends StatefulWidget {
-  FloorLayout({super.key, required this.floorObj, this.building = ''});
+  FloorLayout({
+    super.key,
+    required this.floorObj,
+    this.building = '',
+    this.floor = '',
+    this.accessKey = '',
+  });
 
   String building = '';
   String floor = '';
+  String accessKey = '';
 
   final Floor floorObj;
 
@@ -89,15 +97,14 @@ class _FloorLayout extends State<FloorLayout> {
                               ),
 
                               // This will open Team 2's self report widget when it is completed
-                              onLongPress: () => {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      const AlertDialog(
-                                    title: Text('Dummy Alert Dialog'),
-                                  ),
-                                ),
-                              },
+                              onLongPress: () => popup(
+                                context,
+                                "Washer",
+                                widget.building,
+                                widget.floor,
+                                (index + 1).toString(),
+                                widget.accessKey,
+                              ),
                             ),
                           ),
                         );
@@ -147,15 +154,17 @@ class _FloorLayout extends State<FloorLayout> {
                                   getColor(widget.floorObj.getDryerList[index]),
 
                               // This will open Team 2's self report widget when it is completed
-                              onLongPress: () => {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      const AlertDialog(
-                                    title: Text('Dummy Alert Dialog'),
-                                  ),
-                                ),
-                              },
+                              onLongPress: () => popup(
+                                context,
+                                "Dryer",
+                                widget.building,
+                                widget.floor,
+                                (index +
+                                        1 +
+                                        widget.floorObj.getWasherList.length)
+                                    .toString(),
+                                widget.accessKey,
+                              ),
                             ),
                           ),
                         );
