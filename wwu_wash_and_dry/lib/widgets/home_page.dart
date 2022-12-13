@@ -73,7 +73,7 @@ class _DropDownMain extends State<DropDownMain> {
     setState(() {
       currentDisplay = floorObj;
       buildingName = selectedBuilding;
-      floorNumber = floor.toString();
+      floorNumber = selectedFloor.substring(1);
     });
   }
 
