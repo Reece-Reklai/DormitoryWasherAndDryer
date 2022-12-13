@@ -99,6 +99,7 @@ class _FloorLayout extends State<FloorLayout> {
                               // This will open Team 2's self report widget when it is completed
                               onLongPress: () => popup(
                                 context,
+                                "Washer",
                                 widget.building,
                                 widget.floor,
                                 (index + 1).toString(),
@@ -155,6 +156,7 @@ class _FloorLayout extends State<FloorLayout> {
                               // This will open Team 2's self report widget when it is completed
                               onLongPress: () => popup(
                                 context,
+                                "Dryer",
                                 widget.building,
                                 widget.floor,
                                 (index +

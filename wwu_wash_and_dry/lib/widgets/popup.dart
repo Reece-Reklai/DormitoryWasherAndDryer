@@ -48,6 +48,7 @@ class MachineData {
 
 Future popup(
   BuildContext context,
+  String type,
   String dorm,
   String floor,
   String machineId,
@@ -65,7 +66,7 @@ Future popup(
   return showDialog(
     context: context,
     builder: (context) => AlertDialog(
-      title: Text('Washer $machineId'),
+      title: Text('$type $machineId'),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(32.0)),
       ),
